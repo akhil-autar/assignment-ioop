@@ -129,7 +129,6 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Proceed Here";
-
             // 
             // lblErrorUsername
             // 
@@ -351,7 +350,7 @@
             this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Admin",
+            "System Admin",
             "Manager",
             "Chef"});
             this.comboBox1.Location = new System.Drawing.Point(43, 98);

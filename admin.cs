@@ -133,8 +133,8 @@ namespace assignment
         private void menuUpdateProfile_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmUpdateOwnProfile frmUpdateOwnProfile = new frmUpdateOwnProfile();
-            frmUpdateOwnProfile.ShowDialog();
+            frmUpdateOwnProfile frmUpdateOwnProfiles = new frmUpdateOwnProfile();
+            frmUpdateOwnProfiles.ShowDialog();
             this.Show();
         }
 

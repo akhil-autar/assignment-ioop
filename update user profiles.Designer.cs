@@ -68,6 +68,7 @@
             this.lblErrorUpdate = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblErrorNewPassword = new System.Windows.Forms.Label();
             this.chkCurrentPassword = new System.Windows.Forms.CheckBox();
             this.chkConfirmPassword = new System.Windows.Forms.CheckBox();
             this.chkNewPassword = new System.Windows.Forms.CheckBox();
@@ -79,7 +80,6 @@
             this.lblNewPassword = new System.Windows.Forms.Label();
             this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.lblCurrentPassword = new System.Windows.Forms.Label();
-            this.lblErrorNewPassword = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackToHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -360,13 +360,14 @@
             this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Admin",
+            "System Admin",
             "Manager",
             "Chef"});
             this.comboBox1.Location = new System.Drawing.Point(937, 75);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(231, 29);
             this.comboBox1.TabIndex = 47;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
             // lblChooseRole
             // 
@@ -398,6 +399,7 @@
             this.radioButtonFemale.TabStop = true;
             this.radioButtonFemale.Text = "Female";
             this.radioButtonFemale.UseVisualStyleBackColor = true;
+            this.radioButtonFemale.CheckedChanged += new System.EventHandler(this.radioButtonFemale_CheckedChanged_1);
             // 
             // radioButtonMale
             // 
@@ -409,6 +411,7 @@
             this.radioButtonMale.TabStop = true;
             this.radioButtonMale.Text = "Male";
             this.radioButtonMale.UseVisualStyleBackColor = true;
+            this.radioButtonMale.CheckedChanged += new System.EventHandler(this.radioButtonMale_CheckedChanged_1);
             // 
             // lblErrorEmail
             // 
@@ -435,9 +438,9 @@
             this.lblErrorUpdate.AutoSize = true;
             this.lblErrorUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.lblErrorUpdate.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblErrorUpdate.Location = new System.Drawing.Point(634, 811);
+            this.lblErrorUpdate.Location = new System.Drawing.Point(1231, 131);
             this.lblErrorUpdate.Name = "lblErrorUpdate";
-            this.lblErrorUpdate.Size = new System.Drawing.Size(0, 15);
+            this.lblErrorUpdate.Size = new System.Drawing.Size(0, 23);
             this.lblErrorUpdate.TabIndex = 54;
             // 
             // groupBox1
@@ -467,6 +470,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblErrorUpdate);
             this.groupBox2.Controls.Add(this.lblErrorNewPassword);
             this.groupBox2.Controls.Add(this.chkCurrentPassword);
             this.groupBox2.Controls.Add(this.chkConfirmPassword);
@@ -488,6 +492,16 @@
             this.groupBox2.TabIndex = 54;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Password";
+            // 
+            // lblErrorNewPassword
+            // 
+            this.lblErrorNewPassword.AutoSize = true;
+            this.lblErrorNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorNewPassword.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblErrorNewPassword.Location = new System.Drawing.Point(518, 107);
+            this.lblErrorNewPassword.Name = "lblErrorNewPassword";
+            this.lblErrorNewPassword.Size = new System.Drawing.Size(0, 15);
+            this.lblErrorNewPassword.TabIndex = 66;
             // 
             // chkCurrentPassword
             // 
@@ -513,6 +527,7 @@
             this.chkConfirmPassword.TabIndex = 64;
             this.chkConfirmPassword.Text = "Show Password";
             this.chkConfirmPassword.UseVisualStyleBackColor = false;
+            this.chkConfirmPassword.CheckedChanged += new System.EventHandler(this.chkConfirmPassword_CheckedChanged_1);
             // 
             // chkNewPassword
             // 
@@ -525,6 +540,7 @@
             this.chkNewPassword.TabIndex = 63;
             this.chkNewPassword.Text = "Show Password";
             this.chkNewPassword.UseVisualStyleBackColor = false;
+            this.chkNewPassword.CheckedChanged += new System.EventHandler(this.chkNewPassword_CheckedChanged_1);
             // 
             // lblErrorConfirmPassword
             // 
@@ -554,6 +570,7 @@
             this.txtConfirmPassword.Size = new System.Drawing.Size(234, 29);
             this.txtConfirmPassword.TabIndex = 61;
             this.txtConfirmPassword.UseSystemPasswordChar = true;
+            this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtConfirmPassword_TextChanged_1);
             // 
             // lblConfirmNewPassword
             // 
@@ -577,6 +594,7 @@
             this.txtNewPassword.Size = new System.Drawing.Size(234, 29);
             this.txtNewPassword.TabIndex = 59;
             this.txtNewPassword.UseSystemPasswordChar = true;
+            this.txtNewPassword.TextChanged += new System.EventHandler(this.txtNewPassword_TextChanged_1);
             // 
             // lblNewPassword
             // 
@@ -615,23 +633,12 @@
             this.lblCurrentPassword.TabIndex = 56;
             this.lblCurrentPassword.Text = "Enter Current Password";
             // 
-            // lblErrorNewPassword
-            // 
-            this.lblErrorNewPassword.AutoSize = true;
-            this.lblErrorNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorNewPassword.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblErrorNewPassword.Location = new System.Drawing.Point(518, 107);
-            this.lblErrorNewPassword.Name = "lblErrorNewPassword";
-            this.lblErrorNewPassword.Size = new System.Drawing.Size(0, 15);
-            this.lblErrorNewPassword.TabIndex = 66;
-            // 
             // frmUpdateUserProfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1503, 860);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.lblErrorUpdate);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnFindUser);
@@ -644,7 +651,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUpdateUserProfiles";
-            this.Text = "update_user_profiles";
+            this.Text = "Update User Profile";
             this.Load += new System.EventHandler(this.frmUpdateUserProfiles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackToHome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

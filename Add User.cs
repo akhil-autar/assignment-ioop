@@ -154,10 +154,21 @@ namespace assignment
             txtPassword.UseSystemPasswordChar = !chkShowPassword.Checked;
         }
 
-        private void radioButtonMale_CheckedChanged(object sender, EventArgs e) => ValidateForm();
-        private void radioButtonFemale_CheckedChanged(object sender, EventArgs e) => ValidateForm();
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) => ValidateForm();
-
-        private void btnClear_Click(object sender, EventArgs e) => ClearForm();
+        private void radioButtonMale_CheckedChanged(object sender, EventArgs e)
+        {
+            ValidateForm();
+        }
+        private void radioButtonFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            ValidateForm();
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ValidateForm();
+        }
+        private void btnClear_Click(object sender, EventArgs e) 
+        {
+            ClearForm();
+        }
     }
 }

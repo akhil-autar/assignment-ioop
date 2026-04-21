@@ -8,7 +8,7 @@ using assignment.Models;
 namespace assignment.Helpers
 {
     // Stores the currently logged-in user for the duration of the session
-    // Static class means only one instance exists across the entire application (Singleton pattern)
+    // Static class means only one instance exists across the entire application
     // Any form can access SessionManager.CurrentUser without needing it passed manually
     public static class SessionManager
     {

@@ -7,8 +7,9 @@ using assignment.Helpers;
 
 namespace assignment.Repositories
 {
-    // Handles all database operations for User objects (Encapsulation + Separation of Concerns)
-    // The form does not need to know how data is stored — it just calls these methods (Abstraction)
+    // Handles all database operations for User objects
+    // Column mapping: UserID → Id, Phone → PhoneNumber
+    // IsActive and CreatedAt do NOT exist in the database
     public class UserRepository
     {
         private readonly string _connectionString;
@@ -18,14 +19,15 @@ namespace assignment.Repositories
             _connectionString = connectionString;
         }
 
-        // Adds a new user to the database. Returns true if successful.
+        // ─── Add User ─────────────────────────────────────────────────
+
         public bool AddUser(User user)
         {
-            // Hash the password before storing
+            // Hash password before storing — never store plain text
             string hashedPassword = PasswordHelper.HashPassword(user.Password);
 
-            string query = @"INSERT INTO Users (Username, Password, Role, Email, Phone, Gender, IsActive, CreatedAt) 
-                             VALUES (@username, @password, @role, @email, @phone, @gender, @isActive, @createdAt)";
+            string query = @"INSERT INTO Users (Username, Password, Role, Email, Phone, Gender) 
+                             VALUES (@username, @password, @role, @email, @phone, @gender)";
 
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -38,19 +40,19 @@ namespace assignment.Repositories
                     cmd.Parameters.AddWithValue("@email", user.Email);
                     cmd.Parameters.AddWithValue("@phone", user.PhoneNumber);
                     cmd.Parameters.AddWithValue("@gender", user.Gender);
-                    cmd.Parameters.AddWithValue("@isActive", user.IsActive);
-                    cmd.Parameters.AddWithValue("@createdAt", user.CreatedAt);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
         }
 
+        // ─── Get Users ────────────────────────────────────────────────
+
         // Retrieves all users from the database
         public List<User> GetAllUsers()
         {
             List<User> users = new List<User>();
-            string query = "SELECT Id, Username, Role, Email, Phone, Gender, IsActive, CreatedAt FROM Users";
+            string query = "SELECT UserID, Username, Role, Email, Phone, Gender FROM Users";
 
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -60,27 +62,17 @@ namespace assignment.Repositories
                 {
                     while (reader.Read())
                     {
-                        users.Add(new User
-                        {
-                            Id = (int)reader["Id"],
-                            Username = reader["Username"].ToString(),
-                            Role = reader["Role"].ToString(),
-                            Email = reader["Email"].ToString(),
-                            PhoneNumber = reader["Phone"].ToString(),
-                            Gender = reader["Gender"].ToString(),
-                            IsActive = (bool)reader["IsActive"],
-                            CreatedAt = (DateTime)reader["CreatedAt"]
-                        });
+                        users.Add(MapReaderToUser(reader));
                     }
                 }
             }
             return users;
         }
 
-        // Retrieves a single user by username
+        // Retrieves a single user by username — used for login and profile lookup
         public User GetUserByUsername(string username)
         {
-            string query = "SELECT Id, Username, Password, Role, Email, Phone, Gender, IsActive FROM Users WHERE Username = @username";
+            string query = "SELECT UserID, Username, Password, Role, Email, Phone, Gender FROM Users WHERE Username = @username";
 
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -91,40 +83,57 @@ namespace assignment.Repositories
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
-                        {
-                            return new User
-                            {
-                                Id = (int)reader["Id"],
-                                Username = reader["Username"].ToString(),
-                                Password = reader["Password"].ToString(),
-                                Role = reader["Role"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                PhoneNumber = reader["Phone"].ToString(),
-                                Gender = reader["Gender"].ToString(),
-                                IsActive = (bool)reader["IsActive"]
-                            };
-                        }
+                            return MapReaderToUser(reader, includePassword: true);
                     }
                 }
             }
             return null;
         }
 
-        // Updates an existing user's profile
-        public bool UpdateUser(User user)
+        // Retrieves a single user by their ID
+        public User GetUserById(int userId)
         {
-            string query = @"UPDATE Users SET Email = @email, Phone = @phone, Gender = @gender, Role = @role
-                             WHERE Id = @id";
+            string query = "SELECT UserID, Username, Role, Email, Phone, Gender FROM Users WHERE UserID = @id";
 
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
+                    cmd.Parameters.AddWithValue("@id", userId);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                            return MapReaderToUser(reader);
+                    }
+                }
+            }
+            return null;
+        }
+
+        // ─── Update User ──────────────────────────────────────────────
+
+        // Updates a user's profile fields
+        public bool UpdateUser(User user)
+        {
+            string query = @"UPDATE Users 
+                             SET Username = @username,
+                                 Email    = @email,
+                                 Phone    = @phone,
+                                 Role     = @role,
+                                 Gender   = @gender
+                             WHERE UserID = @id";
+
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@username", user.Username);
                     cmd.Parameters.AddWithValue("@email", user.Email);
                     cmd.Parameters.AddWithValue("@phone", user.PhoneNumber);
-                    cmd.Parameters.AddWithValue("@gender", user.Gender);
                     cmd.Parameters.AddWithValue("@role", user.Role);
+                    cmd.Parameters.AddWithValue("@gender", user.Gender);
                     cmd.Parameters.AddWithValue("@id", user.Id);
 
                     return cmd.ExecuteNonQuery() > 0;
@@ -132,11 +141,11 @@ namespace assignment.Repositories
             }
         }
 
-        // Resets a user's password (admin function)
+        // Resets a user's password — hashes the new password before storing
         public bool ResetPassword(int userId, string newPassword)
         {
             string hashedPassword = PasswordHelper.HashPassword(newPassword);
-            string query = "UPDATE Users SET Password = @password WHERE Id = @id";
+            string query = "UPDATE Users SET Password = @password WHERE UserID = @id";
 
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -150,27 +159,11 @@ namespace assignment.Repositories
             }
         }
 
-        // Toggles a user's active status (enable/disable without deleting)
-        public bool SetUserActiveStatus(int userId, bool isActive)
-        {
-            string query = "UPDATE Users SET IsActive = @isActive WHERE Id = @id";
+        // ─── Delete User ──────────────────────────────────────────────
 
-            using (SqlConnection con = new SqlConnection(_connectionString))
-            {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@isActive", isActive);
-                    cmd.Parameters.AddWithValue("@id", userId);
-                    return cmd.ExecuteNonQuery() > 0;
-                }
-            }
-        }
-
-        // Deletes a user from the database
         public bool DeleteUser(int userId)
         {
-            string query = "DELETE FROM Users WHERE Id = @id";
+            string query = "DELETE FROM Users WHERE UserID = @id";
 
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
@@ -183,37 +176,54 @@ namespace assignment.Repositories
             }
         }
 
-        // Returns total user count for dashboard stat card
+        // ─── Stat Counts (used by dashboard and view all accounts) ────
+
         public int GetTotalUserCount()
         {
             return ExecuteCount("SELECT COUNT(*) FROM Users");
         }
 
-        // Returns count of staff accounts (non-customer roles) for dashboard
         public int GetStaffCount()
         {
             return ExecuteCount("SELECT COUNT(*) FROM Users WHERE Role != 'Customer'");
         }
 
-        // Returns count of customer accounts for dashboard
         public int GetCustomerCount()
         {
             return ExecuteCount("SELECT COUNT(*) FROM Users WHERE Role = 'Customer'");
         }
 
-        // Returns count of active accounts for dashboard
+        // IsActive doesn't exist in DB — returns total as safe fallback
         public int GetActiveUserCount()
         {
-            return ExecuteCount("SELECT COUNT(*) FROM Users WHERE IsActive = 1");
+            return GetTotalUserCount();
         }
 
-        // Returns count of inactive/disabled accounts for dashboard
         public int GetInactiveUserCount()
         {
-            return ExecuteCount("SELECT COUNT(*) FROM Users WHERE IsActive = 0");
+            return 0;
         }
 
-        // Private helper to avoid repeating connection code for COUNT queries (DRY principle)
+        // ─── Private Helpers ──────────────────────────────────────────
+
+        // Maps a SqlDataReader row to a User object
+        // includePassword: only true for login — never include password for display purposes
+        private User MapReaderToUser(SqlDataReader reader, bool includePassword = false)
+        {
+            return new User
+            {
+                Id = (int)reader["UserID"],
+                Username = reader["Username"].ToString(),
+                Password = includePassword ? reader["Password"].ToString() : "",
+                Role = reader["Role"].ToString(),
+                Email = reader["Email"].ToString(),
+                PhoneNumber = reader["Phone"].ToString(),
+                Gender = reader["Gender"].ToString(),
+                IsActive = true
+            };
+        }
+
+        // Reusable COUNT query helper — avoids repeating connection code (DRY principle)
         private int ExecuteCount(string query)
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

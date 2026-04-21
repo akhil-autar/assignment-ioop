@@ -23,6 +23,7 @@ namespace assignment
             InitializeComponent();
             _userRepository = new UserRepository(_connectionString);
             SetFieldsEnabled(false);
+            btnUpdate.Enabled = false;
         }
 
         // ─── Find User ────────────────────────────────────────────────
@@ -130,8 +131,8 @@ namespace assignment
                 }
             }
 
-            // ── Build updated User object using current values as fallback ──
-            // If a field is left blank, the existing value is kept (your original logic preserved)
+            //Build updated User object using current values
+            // If a field is left blank, the existing value is kept
             User updatedUser = new User
             {
                 Id = _currentUser.Id,
@@ -179,7 +180,6 @@ namespace assignment
             radioButtonFemale.Enabled = enabled;
             radioButtonMale.Enabled = enabled;
             comboBox1.Enabled = enabled;
-            btnUpdate.Enabled = enabled;
             txtCurrentPassword.Enabled = enabled;
             txtNewPassword.Enabled = enabled;
             txtConfirmPassword.Enabled = enabled;
@@ -264,27 +264,10 @@ namespace assignment
             UpdateButtonState();
         }
 
-        private void txtNewPassword_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtNewPassword.Text)) { lblErrorNewPassword.Text = ""; UpdateButtonState(); return; }
-            // Show password strength as the user types
-            string strength = PasswordHelper.GetStrength(txtNewPassword.Text.Trim());
-            lblErrorNewPassword.Text = $"Strength: {strength}";
+        private void chkConfirmDelete_CheckedChanged(object sender, EventArgs e)
+        { 
             UpdateButtonState();
         }
-
-        private void txtConfirmPassword_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtConfirmPassword.Text)) { lblErrorConfirmPassword.Text = ""; return; }
-            lblErrorConfirmPassword.Text = txtConfirmPassword.Text.Trim() == txtNewPassword.Text.Trim()
-                ? "" : "Passwords do not match.";
-            UpdateButtonState();
-        }
-
-        private void chkConfirmDelete_CheckedChanged(object sender, EventArgs e) => UpdateButtonState();
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) => UpdateButtonState();
-        private void radioButtonMale_CheckedChanged(object sender, EventArgs e) => UpdateButtonState();
-        private void radioButtonFemale_CheckedChanged(object sender, EventArgs e) => UpdateButtonState();
 
         // Enables the update button only when confirm checkbox is checked and form is valid
         private void UpdateButtonState()
@@ -312,23 +295,6 @@ namespace assignment
             return anyChange;
         }
 
-        // ─── Show/Hide Password Checkboxes ────────────────────────────
-
-        private void chkCurrentPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            txtCurrentPassword.UseSystemPasswordChar = !chkCurrentPassword.Checked;
-        }
-
-        private void chkNewPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            txtNewPassword.UseSystemPasswordChar = !chkNewPassword.Checked;
-        }
-
-        private void chkConfirmPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            txtConfirmPassword.UseSystemPasswordChar = !chkConfirmPassword.Checked;
-        }
-
         // ─── Navigation ───────────────────────────────────────────────
 
         private void pictureBoxBackToHome_Click(object sender, EventArgs e)
@@ -339,6 +305,55 @@ namespace assignment
         private void frmUpdateUserProfiles_Load(object sender, EventArgs e)
         {
 
+        }
+
+
+        // ─── Show/Hide Password Checkboxes ────────────────────────────
+        private void chkCurrentPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            txtCurrentPassword.UseSystemPasswordChar = !chkCurrentPassword.Checked;
+        }
+
+        private void chkNewPassword_CheckedChanged_1(object sender, EventArgs e)
+        {
+            txtNewPassword.UseSystemPasswordChar = !chkNewPassword.Checked;
+        }
+
+        private void chkConfirmPassword_CheckedChanged_1(object sender, EventArgs e)
+        {
+            txtConfirmPassword.UseSystemPasswordChar = !chkConfirmPassword.Checked;
+        }
+
+        private void txtNewPassword_TextChanged_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNewPassword.Text)) { lblErrorNewPassword.Text = ""; UpdateButtonState(); return; }
+            // Show password strength as the user types
+            string strength = PasswordHelper.GetStrength(txtNewPassword.Text.Trim());
+            lblErrorNewPassword.Text = $"Strength: {strength}";
+            UpdateButtonState();
+        }
+
+        private void txtConfirmPassword_TextChanged_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtConfirmPassword.Text)) { lblErrorConfirmPassword.Text = ""; return; }
+            lblErrorConfirmPassword.Text = txtConfirmPassword.Text.Trim() == txtNewPassword.Text.Trim()
+                ? "" : "Passwords do not match.";
+            UpdateButtonState();
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            UpdateButtonState();
+        }
+
+        private void radioButtonMale_CheckedChanged_1(object sender, EventArgs e)
+        {
+            UpdateButtonState();
+        }
+
+        private void radioButtonFemale_CheckedChanged_1(object sender, EventArgs e)
+        {
+            UpdateButtonState();
         }
     }
 }

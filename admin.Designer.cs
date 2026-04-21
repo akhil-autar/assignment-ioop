@@ -80,7 +80,7 @@
             this.grpHome.Font = new System.Drawing.Font("Malgun Gothic", 8F);
             this.grpHome.Location = new System.Drawing.Point(20, 70);
             this.grpHome.Name = "grpHome";
-            this.grpHome.Size = new System.Drawing.Size(531, 232);
+            this.grpHome.Size = new System.Drawing.Size(676, 214);
             this.grpHome.TabIndex = 0;
             this.grpHome.TabStop = false;
             this.grpHome.Text = "Home";
@@ -88,7 +88,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(320, 52);
+            this.pictureBox1.Location = new System.Drawing.Point(604, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(72, 53);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -101,7 +101,7 @@
             this.lblSystemAdmin.BackColor = System.Drawing.Color.Transparent;
             this.lblSystemAdmin.Font = new System.Drawing.Font("Century Gothic", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSystemAdmin.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblSystemAdmin.Location = new System.Drawing.Point(6, 121);
+            this.lblSystemAdmin.Location = new System.Drawing.Point(6, 102);
             this.lblSystemAdmin.Name = "lblSystemAdmin";
             this.lblSystemAdmin.Size = new System.Drawing.Size(406, 69);
             this.lblSystemAdmin.TabIndex = 1;
@@ -111,11 +111,11 @@
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.BackColor = System.Drawing.Color.Transparent;
-            this.lblWelcome.Font = new System.Drawing.Font("Century Gothic", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Font = new System.Drawing.Font("Century Gothic", 18F);
             this.lblWelcome.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.lblWelcome.Location = new System.Drawing.Point(6, 36);
+            this.lblWelcome.Location = new System.Drawing.Point(10, 41);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(308, 69);
+            this.lblWelcome.Size = new System.Drawing.Size(197, 43);
             this.lblWelcome.TabIndex = 0;
             this.lblWelcome.Text = "Welcome,";
             // 
@@ -131,7 +131,7 @@
             this.menuUpdateProfile});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
-            this.menuMain.Size = new System.Drawing.Size(1478, 36);
+            this.menuMain.Size = new System.Drawing.Size(1478, 29);
             this.menuMain.TabIndex = 1;
             this.menuMain.Text = "menuStrip1";
             this.menuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuMain_ItemClicked);
@@ -149,14 +149,14 @@
             // mnuLogout
             // 
             this.mnuLogout.Name = "mnuLogout";
-            this.mnuLogout.Size = new System.Drawing.Size(159, 34);
+            this.mnuLogout.Size = new System.Drawing.Size(270, 34);
             this.mnuLogout.Text = "Logout";
             this.mnuLogout.Click += new System.EventHandler(this.mnuLogout_Click);
             // 
             // MnuExit
             // 
             this.MnuExit.Name = "MnuExit";
-            this.MnuExit.Size = new System.Drawing.Size(159, 34);
+            this.MnuExit.Size = new System.Drawing.Size(270, 34);
             this.MnuExit.Text = "Exit";
             this.MnuExit.Click += new System.EventHandler(this.MnuExit_Click);
             // 
@@ -195,7 +195,7 @@
             this.groupBox1.Controls.Add(this.btnRemoveUser);
             this.groupBox1.Controls.Add(this.btnAddUser);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(20, 365);
+            this.groupBox1.Location = new System.Drawing.Point(20, 344);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1423, 298);
             this.groupBox1.TabIndex = 3;
