@@ -32,6 +32,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblWeakPassword = new System.Windows.Forms.Label();
+            this.chkShowPassword = new System.Windows.Forms.CheckBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
@@ -47,11 +49,17 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblError = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuMain = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBackToMainMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.chkShowPassword = new System.Windows.Forms.CheckBox();
+            this.lblErrorPassword = new System.Windows.Forms.Label();
+            this.lblErrorUsername = new System.Windows.Forms.Label();
+            this.lblErrorEmail = new System.Windows.Forms.Label();
+            this.lblErrorPhone = new System.Windows.Forms.Label();
+            this.lblPasswordStrength = new System.Windows.Forms.Label();
+            this.lblError3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -83,6 +91,14 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.lblError3);
+            this.groupBox1.Controls.Add(this.lblPasswordStrength);
+            this.groupBox1.Controls.Add(this.lblErrorPhone);
+            this.groupBox1.Controls.Add(this.lblErrorEmail);
+            this.groupBox1.Controls.Add(this.lblErrorUsername);
+            this.groupBox1.Controls.Add(this.lblErrorPassword);
+            this.groupBox1.Controls.Add(this.lblError);
+            this.groupBox1.Controls.Add(this.lblWeakPassword);
             this.groupBox1.Controls.Add(this.chkShowPassword);
             this.groupBox1.Controls.Add(this.txtPhoneNumber);
             this.groupBox1.Controls.Add(this.btnRegister);
@@ -106,12 +122,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Proceed Here";
             // 
+            // lblWeakPassword
+            // 
+            this.lblWeakPassword.AutoSize = true;
+            this.lblWeakPassword.Font = new System.Drawing.Font("Microsoft JhengHei", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWeakPassword.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblWeakPassword.Location = new System.Drawing.Point(95, 234);
+            this.lblWeakPassword.Name = "lblWeakPassword";
+            this.lblWeakPassword.Size = new System.Drawing.Size(0, 16);
+            this.lblWeakPassword.TabIndex = 20;
+            // 
+            // chkShowPassword
+            // 
+            this.chkShowPassword.AutoSize = true;
+            this.chkShowPassword.BackColor = System.Drawing.Color.Transparent;
+            this.chkShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkShowPassword.Location = new System.Drawing.Point(10, 287);
+            this.chkShowPassword.Name = "chkShowPassword";
+            this.chkShowPassword.Size = new System.Drawing.Size(121, 21);
+            this.chkShowPassword.TabIndex = 8;
+            this.chkShowPassword.Text = "Show Password";
+            this.chkShowPassword.UseVisualStyleBackColor = false;
+            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
+            // 
             // txtPhoneNumber
             // 
             this.txtPhoneNumber.Location = new System.Drawing.Point(317, 73);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(214, 27);
             this.txtPhoneNumber.TabIndex = 19;
+            this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtPhoneNumber_TextChanged);
             // 
             // btnRegister
             // 
@@ -130,6 +170,7 @@
             this.txtConfirmPassword.Size = new System.Drawing.Size(214, 27);
             this.txtConfirmPassword.TabIndex = 17;
             this.txtConfirmPassword.UseSystemPasswordChar = true;
+            this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtConfirmPassword_TextChanged);
             // 
             // lblConfirmPassword
             // 
@@ -148,6 +189,8 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(214, 27);
             this.txtPassword.TabIndex = 15;
+            this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // lblPassword
             // 
@@ -201,6 +244,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(214, 27);
             this.txtEmail.TabIndex = 10;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // lblEmail
             // 
@@ -229,6 +273,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(214, 27);
             this.txtUsername.TabIndex = 6;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // lblUsername
             // 
@@ -250,6 +295,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(688, 788);
             this.panel1.TabIndex = 4;
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.BackColor = System.Drawing.Color.Transparent;
+            this.lblError.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
+            this.lblError.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblError.Location = new System.Drawing.Point(211, 397);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(0, 24);
+            this.lblError.TabIndex = 20;
             // 
             // menuStrip1
             // 
@@ -286,18 +342,66 @@
             this.mnuExit.Text = "Exit ";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
-            // chkShowPassword
+            // lblErrorPassword
             // 
-            this.chkShowPassword.AutoSize = true;
-            this.chkShowPassword.BackColor = System.Drawing.Color.Transparent;
-            this.chkShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkShowPassword.Location = new System.Drawing.Point(10, 287);
-            this.chkShowPassword.Name = "chkShowPassword";
-            this.chkShowPassword.Size = new System.Drawing.Size(121, 21);
-            this.chkShowPassword.TabIndex = 8;
-            this.chkShowPassword.Text = "Show Password";
-            this.chkShowPassword.UseVisualStyleBackColor = false;
-            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
+            this.lblErrorPassword.AutoSize = true;
+            this.lblErrorPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorPassword.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblErrorPassword.Location = new System.Drawing.Point(314, 284);
+            this.lblErrorPassword.Name = "lblErrorPassword";
+            this.lblErrorPassword.Size = new System.Drawing.Size(0, 23);
+            this.lblErrorPassword.TabIndex = 6;
+            // 
+            // lblErrorUsername
+            // 
+            this.lblErrorUsername.AutoSize = true;
+            this.lblErrorUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lblErrorUsername.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
+            this.lblErrorUsername.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblErrorUsername.Location = new System.Drawing.Point(13, 103);
+            this.lblErrorUsername.Name = "lblErrorUsername";
+            this.lblErrorUsername.Size = new System.Drawing.Size(0, 24);
+            this.lblErrorUsername.TabIndex = 21;
+            // 
+            // lblErrorEmail
+            // 
+            this.lblErrorEmail.AutoSize = true;
+            this.lblErrorEmail.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
+            this.lblErrorEmail.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblErrorEmail.Location = new System.Drawing.Point(13, 189);
+            this.lblErrorEmail.Name = "lblErrorEmail";
+            this.lblErrorEmail.Size = new System.Drawing.Size(0, 24);
+            this.lblErrorEmail.TabIndex = 22;
+            // 
+            // lblErrorPhone
+            // 
+            this.lblErrorPhone.AutoSize = true;
+            this.lblErrorPhone.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
+            this.lblErrorPhone.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblErrorPhone.Location = new System.Drawing.Point(314, 103);
+            this.lblErrorPhone.Name = "lblErrorPhone";
+            this.lblErrorPhone.Size = new System.Drawing.Size(0, 24);
+            this.lblErrorPhone.TabIndex = 23;
+            // 
+            // lblPasswordStrength
+            // 
+            this.lblPasswordStrength.AutoSize = true;
+            this.lblPasswordStrength.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
+            this.lblPasswordStrength.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblPasswordStrength.Location = new System.Drawing.Point(158, 290);
+            this.lblPasswordStrength.Name = "lblPasswordStrength";
+            this.lblPasswordStrength.Size = new System.Drawing.Size(0, 24);
+            this.lblPasswordStrength.TabIndex = 24;
+            // 
+            // lblError3
+            // 
+            this.lblError3.AutoSize = true;
+            this.lblError3.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
+            this.lblError3.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblError3.Location = new System.Drawing.Point(314, 284);
+            this.lblError3.Name = "lblError3";
+            this.lblError3.Size = new System.Drawing.Size(0, 24);
+            this.lblError3.TabIndex = 21;
             // 
             // frmEntrance
             // 
@@ -348,6 +452,14 @@
         private System.Windows.Forms.RadioButton radioButtonMale;
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.CheckBox chkShowPassword;
+        private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblWeakPassword;
+        private System.Windows.Forms.Label lblErrorPassword;
+        private System.Windows.Forms.Label lblErrorUsername;
+        private System.Windows.Forms.Label lblErrorEmail;
+        private System.Windows.Forms.Label lblErrorPhone;
+        private System.Windows.Forms.Label lblPasswordStrength;
+        private System.Windows.Forms.Label lblError3;
     }
 }
 

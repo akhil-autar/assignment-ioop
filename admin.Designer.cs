@@ -52,6 +52,12 @@
             this.btnAddUser = new System.Windows.Forms.Button();
             this.lblDashboard = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
+            this.lblTotalNumberofUsers = new System.Windows.Forms.Label();
+            this.lblNumberofCustomers = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.btnViewAllAccounts = new System.Windows.Forms.Button();
+            this.lblTotalActiveUsers = new System.Windows.Forms.Label();
+            this.lblTotalInactiveUsers = new System.Windows.Forms.Label();
             this.grpHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuMain.SuspendLayout();
@@ -62,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
             // grpHome
@@ -136,7 +143,7 @@
             this.MnuExit});
             this.mnuMain.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(66, 30);
+            this.mnuMain.Size = new System.Drawing.Size(66, 25);
             this.mnuMain.Text = "Menu";
             // 
             // mnuLogout
@@ -157,8 +164,9 @@
             // 
             this.menuUpdateProfile.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.menuUpdateProfile.Name = "menuUpdateProfile";
-            this.menuUpdateProfile.Size = new System.Drawing.Size(125, 30);
+            this.menuUpdateProfile.Size = new System.Drawing.Size(125, 25);
             this.menuUpdateProfile.Text = "Update Profile";
+            this.menuUpdateProfile.Click += new System.EventHandler(this.menuUpdateProfile_Click);
             // 
             // pictureBox2
             // 
@@ -273,6 +281,7 @@
             this.btnUpdateUserProfile.TabIndex = 6;
             this.btnUpdateUserProfile.Text = "Update User Profiles";
             this.btnUpdateUserProfile.UseVisualStyleBackColor = true;
+            this.btnUpdateUserProfile.Click += new System.EventHandler(this.btnUpdateUserProfile_Click);
             // 
             // btnRemoveUser
             // 
@@ -283,6 +292,7 @@
             this.btnRemoveUser.TabIndex = 5;
             this.btnRemoveUser.Text = "Remove User";
             this.btnRemoveUser.UseVisualStyleBackColor = true;
+            this.btnRemoveUser.Click += new System.EventHandler(this.btnRemoveUser_Click);
             // 
             // btnAddUser
             // 
@@ -293,6 +303,7 @@
             this.btnAddUser.TabIndex = 4;
             this.btnAddUser.Text = "Add User";
             this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // lblDashboard
             // 
@@ -316,12 +327,75 @@
             this.lblTime.Size = new System.Drawing.Size(0, 15);
             this.lblTime.TabIndex = 15;
             // 
+            // lblTotalNumberofUsers
+            // 
+            this.lblTotalNumberofUsers.AutoSize = true;
+            this.lblTotalNumberofUsers.Font = new System.Drawing.Font("Dubai", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalNumberofUsers.Location = new System.Drawing.Point(723, 149);
+            this.lblTotalNumberofUsers.Name = "lblTotalNumberofUsers";
+            this.lblTotalNumberofUsers.Size = new System.Drawing.Size(0, 27);
+            this.lblTotalNumberofUsers.TabIndex = 16;
+            // 
+            // lblNumberofCustomers
+            // 
+            this.lblNumberofCustomers.AutoSize = true;
+            this.lblNumberofCustomers.Font = new System.Drawing.Font("Dubai", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumberofCustomers.Location = new System.Drawing.Point(723, 172);
+            this.lblNumberofCustomers.Name = "lblNumberofCustomers";
+            this.lblNumberofCustomers.Size = new System.Drawing.Size(0, 27);
+            this.lblNumberofCustomers.TabIndex = 17;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(129, 722);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(88, 77);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 18;
+            this.pictureBox9.TabStop = false;
+            // 
+            // btnViewAllAccounts
+            // 
+            this.btnViewAllAccounts.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.btnViewAllAccounts.Location = new System.Drawing.Point(112, 805);
+            this.btnViewAllAccounts.Name = "btnViewAllAccounts";
+            this.btnViewAllAccounts.Size = new System.Drawing.Size(136, 41);
+            this.btnViewAllAccounts.TabIndex = 14;
+            this.btnViewAllAccounts.Text = "View All Accounts";
+            this.btnViewAllAccounts.UseVisualStyleBackColor = true;
+            this.btnViewAllAccounts.Click += new System.EventHandler(this.btnViewAllAccounts_Click);
+            // 
+            // lblTotalActiveUsers
+            // 
+            this.lblTotalActiveUsers.AutoSize = true;
+            this.lblTotalActiveUsers.Font = new System.Drawing.Font("Dubai", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalActiveUsers.Location = new System.Drawing.Point(723, 199);
+            this.lblTotalActiveUsers.Name = "lblTotalActiveUsers";
+            this.lblTotalActiveUsers.Size = new System.Drawing.Size(0, 27);
+            this.lblTotalActiveUsers.TabIndex = 19;
+            // 
+            // lblTotalInactiveUsers
+            // 
+            this.lblTotalInactiveUsers.AutoSize = true;
+            this.lblTotalInactiveUsers.Font = new System.Drawing.Font("Dubai", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalInactiveUsers.Location = new System.Drawing.Point(723, 230);
+            this.lblTotalInactiveUsers.Name = "lblTotalInactiveUsers";
+            this.lblTotalInactiveUsers.Size = new System.Drawing.Size(0, 27);
+            this.lblTotalInactiveUsers.TabIndex = 20;
+            // 
             // frmSystemAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1478, 919);
+            this.Controls.Add(this.lblTotalInactiveUsers);
+            this.Controls.Add(this.lblTotalActiveUsers);
+            this.Controls.Add(this.btnViewAllAccounts);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.lblNumberofCustomers);
+            this.Controls.Add(this.lblTotalNumberofUsers);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblDashboard);
             this.Controls.Add(this.groupBox1);
@@ -345,6 +419,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,5 +450,11 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label lblDashboard;
         private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lblTotalNumberofUsers;
+        private System.Windows.Forms.Label lblNumberofCustomers;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Button btnViewAllAccounts;
+        private System.Windows.Forms.Label lblTotalActiveUsers;
+        private System.Windows.Forms.Label lblTotalInactiveUsers;
     }
 }

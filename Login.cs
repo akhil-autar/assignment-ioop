@@ -1,108 +1,174 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Windows.Forms;
+using assignment.Helpers;
+using assignment.Models;
+using assignment.Repositories;
 
 namespace assignment
 {
     public partial class frmLogin : Form
     {
-        int _errorcounter = 3;
+        // ─── Dependencies ─────────────────────────────────────────────
+        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
+        private readonly UserRepository _userRepository;
+
+        // ─── State ────────────────────────────────────────────────────
+        private int _attemptsRemaining = 3;
+
         public frmLogin()
         {
             InitializeComponent();
+            _userRepository = new UserRepository(_connectionString);
         }
+
+        // ─── Show/Hide Password ───────────────────────────────────────
 
         private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
         {
-            //used to show or hide the password characters in the password textbox
             txtPassword.UseSystemPasswordChar = !chkShowPassword.Checked;
         }
 
+        // ─── Login Button ─────────────────────────────────────────────
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //initializing variables
             lblError.Text = "";
-            string loginID = txtUsername.Text.Trim();
+
+            string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            //checking if username or password is empty
-            if (string.IsNullOrWhiteSpace(loginID) || string.IsNullOrWhiteSpace(password))
+            // Basic empty field check
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                lblError.Text = "Please enter Username and Password.";
+                lblError.Text = "Please enter your username and password.";
                 return;
             }
 
+            // Retrieve user from database via UserRepository
+            // The form does not write any SQL — that is the repository's job (Separation of Concerns)
+            User user = _userRepository.GetUserByUsername(username);
 
-            //SECTION TO VALIDATE IN DATABASE
-            //connecting to database and defining query
-            string connectionstring = "Data Source = localhost; Initial Catalog = GR8Food; Integrated Security = True; TrustServerCertificate = True";
-            string query = "SELECT Password FROM Users WHERE Username = @username";
-
-            //using "using" because it automatically closes the connection when done
-            using (SqlConnection con = new SqlConnection(connectionstring))
+            // Check if user exists
+            if (user == null)
             {
-                //opens the connection
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    //using this method as it is safer.(refer to documentation --> through research)
-                    cmd.Parameters.AddWithValue("@username", loginID);
-                    
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        // user exists → now validate password
-                        string storedPassword = reader["Password"].ToString();
-
-                        if (password == storedPassword)
-                        {
-                            MessageBox.Show("Login successful!");
-                            this.Hide();
-                            frmSystemAdmin frmSystemAdmin = new frmSystemAdmin();
-                            frmSystemAdmin.ShowDialog();
-
-                            //TO REPLACE WITH CASE TO CALL EACH ROLE'S PAGE
-                        }
-                        else
-                        {
-                            //checking and updating the number of attempts
-                            _errorcounter -= 1;
-                            MessageBox.Show($"Incorrect password.You have {_errorcounter} attemps left.");
-                            lblError.Text = ($"Remaining Attempts: {_errorcounter}");
-                            if (_errorcounter == 0)
-                            {
-                                DialogResult userResponse = MessageBox.Show("You have exceeded the number of attempts.Please try again later.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                this.Close();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        DialogResult userResponse = MessageBox.Show("You have exceeded the number of attempts.Please try again later.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
+                MessageBox.Show("User does not exist.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
+            // Check if account has been disabled by admin
+            if (!user.IsActive)
+            {
+                MessageBox.Show(
+                    "Your account has been disabled.\nPlease contact the system administrator.",
+                    "Account Disabled",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
             }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+            // Verify password using PasswordHelper
+            // PasswordHelper hashes the entered password and compares it to the stored hash
+            // Passwords are never stored or compared as plain text (Security best practice)
+            if (PasswordHelper.VerifyPassword(password, user.Password))
+            {
+                // Store the logged-in user globally using SessionManager
+                // This allows all other forms to access the current user without passing it manually
+                SessionManager.Login(user);
+
+                MessageBox.Show($"Welcome, {user.Username}!", "Login Successful",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.Hide();
+                OpenRoleForm(user.Role);
+            }
+            else
+            {
+                HandleFailedAttempt();
+            }
+        }
+
+        // ─── Role Routing ─────────────────────────────────────────────
+
+        // Directs the user to the correct dashboard based on their role
+        // Uses a switch statement so adding new roles only requires one new case here
+        private void OpenRoleForm(string role)
         {
+            Form nextForm;
+
+            switch (role)
+            {
+                case "System Admin":
+                    nextForm = new frmSystemAdmin();
+                    break;
+                    /*
+                case "Manager":
+                    nextForm = new frmManager();
+                    break;
+                case "Cashier":
+                    nextForm = new frmCashier();
+                    break;
+                case "Kitchen Staff":
+                    nextForm = new frmKitchen();
+                    break;
+                    */
+                default:
+                    MessageBox.Show($"No dashboard found for role: {role}",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Show();
+                    return;
+            }
+
+            nextForm.ShowDialog();
             this.Close();
         }
 
+        // ─── Failed Login Handler ─────────────────────────────────────
+
+        // Handles decrementing attempts and locking the form after 3 failures
+        private void HandleFailedAttempt()
+        {
+            _attemptsRemaining--;
+
+            if (_attemptsRemaining <= 0)
+            {
+                lblError.Text = "Account locked. Too many failed attempts.";
+                btnLogin.Enabled = false;
+                MessageBox.Show(
+                    "You have exceeded the maximum number of login attempts.\nPlease contact the system administrator.",
+                    "Account Locked",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                this.Close();
+            }
+            else
+            {
+                lblError.Text = $"Incorrect password. {_attemptsRemaining} attempt(s) remaining.";
+            }
+        }
+
+        // ─── Menu Strip ───────────────────────────────────────────────
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult userResponse = MessageBox.Show(
+                "Are you sure you want to exit?",
+                "Exit",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (userResponse == DialogResult.Yes)
+                this.Close();
+        }
+
+        // ─── Back to Entrance ─────────────────────────────────────────
+
         private void lblRegisterNewAccount_Click(object sender, EventArgs e)
         {
-            //redirects user to the registration form
             this.Hide();
             frmEntrance frmEntrance = new frmEntrance();
             frmEntrance.ShowDialog();
+            this.Close();
         }
     }
 }

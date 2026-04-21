@@ -7,62 +7,65 @@ using assignment.Repositories;
 
 namespace assignment
 {
-    // Customer self-registration form.
-    // Role is hardcoded to "Customer" — customers cannot choose their own role.
-    // All database operations delegated to UserRepository (Separation of Concerns)
-    public partial class frmEntrance : Form
+    // The form is only responsible for UI interaction.
+    // All logic is delegated to UserRepository, Validator, and PasswordHelper (Separation of Concerns)
+    public partial class frmAddUser : Form
     {
-        // ─── Dependencies ─────────────────────────────────────────────
-        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
+        // Dependencies injected via constructor (Dependency principle)
         private readonly UserRepository _userRepository;
+        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
 
-        public frmEntrance()
+        public frmAddUser()
         {
             InitializeComponent();
             _userRepository = new UserRepository(_connectionString);
-            btnRegister.Enabled = false;
+            btnAddUser.Enabled = false;
         }
 
-        // ─── Register Button ──────────────────────────────────────────
+        // ─── Navigation ───────────────────────────────────────────────
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void pictureBoxBackToHome_Click(object sender, EventArgs e)
         {
-            // Build a User object from the form fields
-            // Role is always "Customer" for self-registration — admin assigns all other roles
-            User newCustomer = new User(
+            this.Hide();
+            frmSystemAdmin frmSystemAdmin = new frmSystemAdmin();
+            frmSystemAdmin.ShowDialog();
+            this.Close();
+        }
+
+        // ─── Add User Button ──────────────────────────────────────────
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            // Build a User object from the form fields (using the User model class)
+            User newUser = new User(
                 username: txtUsername.Text.Trim(),
                 password: txtPassword.Text.Trim(),
-                role: "Customer",
+                role: comboBox1.SelectedItem.ToString(),
                 email: txtEmail.Text.Trim(),
                 phoneNumber: txtPhoneNumber.Text.Trim(),
                 gender: radioButtonMale.Checked ? "Male" : "Female"
             );
 
-            // Delegate database operation to UserRepository
-            // Password is hashed automatically inside AddUser()
-            bool success = _userRepository.AddUser(newCustomer);
+            // Delegate the database operation to UserRepository (not the form's responsibility)
+            bool success = _userRepository.AddUser(newUser);
 
             if (success)
             {
-                MessageBox.Show("Account created successfully! Please log in.",
-                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Redirect to login after successful registration
-                this.Hide();
-                frmLogin frmLogin = new frmLogin();
-                frmLogin.ShowDialog();
-                this.Close();
+                MessageBox.Show($"User '{newUser.Username}' added successfully!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearForm();
             }
             else
             {
-                MessageBox.Show("Registration failed. Please try again.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to add user. Please try again.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         // ─── Form Validation ──────────────────────────────────────────
 
-        // Enables the register button only when all fields are valid
+        // Central validation method — enables the Add button only when all fields are valid.
+        // Called on every field change event below.
         private void ValidateForm()
         {
             string error;
@@ -73,9 +76,31 @@ namespace assignment
             bool phoneOk = Validator.ValidatePhone(txtPhoneNumber.Text.Trim(), out error);
             bool confirmOk = txtConfirmPassword.Text.Trim() == txtPassword.Text.Trim()
                                    && !string.IsNullOrEmpty(txtConfirmPassword.Text.Trim());
+            bool roleOk = comboBox1.SelectedIndex != -1;
             bool genderOk = radioButtonMale.Checked || radioButtonFemale.Checked;
 
-            btnRegister.Enabled = usernameOk && emailOk && passwordOk && phoneOk && confirmOk && genderOk;
+            btnAddUser.Enabled = usernameOk && emailOk && passwordOk && phoneOk && confirmOk && roleOk && genderOk;
+        }
+
+        // ─── Helper Methods ───────────────────────────────────────────
+
+        // Resets all fields back to empty after a successful add
+        private void ClearForm()
+        {
+            txtUsername.Clear();
+            txtEmail.Clear();
+            txtPhoneNumber.Clear();
+            txtPassword.Clear();
+            txtConfirmPassword.Clear();
+            comboBox1.SelectedIndex = -1;
+            radioButtonMale.Checked = false;
+            radioButtonFemale.Checked = false;
+            lblPasswordStrength.Text = "";
+            lblErrorUsername.Text = "";
+            lblErrorEmail.Text = "";
+            lblErrorPhone.Text = "";
+            lblError3.Text = "";
+            btnAddUser.Enabled = false;
         }
 
         // ─── Field Change Events ──────────────────────────────────────
@@ -103,7 +128,7 @@ namespace assignment
         {
             ValidateForm();
 
-            // Show password strength using PasswordHelper
+            // Show password strength using PasswordHelper (delegating logic to the helper class)
             string strength = PasswordHelper.GetStrength(txtPassword.Text.Trim());
             lblPasswordStrength.Text = string.IsNullOrEmpty(strength) ? "" : $"Strength: {strength}";
             if (strength == "Weak") lblPasswordStrength.ForeColor = Color.Red;
@@ -112,7 +137,7 @@ namespace assignment
             else if (strength == "Strong") lblPasswordStrength.ForeColor = Color.Green;
             else lblPasswordStrength.ForeColor = Color.Gray;
 
-            // Re-check confirm password if already filled
+            // Re-validate confirm password if it already has a value
             if (!string.IsNullOrEmpty(txtConfirmPassword.Text))
                 txtConfirmPassword_TextChanged(sender, e);
         }
@@ -120,45 +145,19 @@ namespace assignment
         private void txtConfirmPassword_TextChanged(object sender, EventArgs e)
         {
             ValidateForm();
-            lblErrorPassword.Text = txtConfirmPassword.Text.Trim() == txtPassword.Text.Trim()
+            lblError3.Text = txtConfirmPassword.Text.Trim() == txtPassword.Text.Trim()
                 ? "" : "Passwords do not match.";
         }
-
-        private void radioButtonMale_CheckedChanged(object sender, EventArgs e) => ValidateForm();
-        private void radioButtonFemale_CheckedChanged(object sender, EventArgs e) => ValidateForm();
-
-        // ─── Show/Hide Password ───────────────────────────────────────
 
         private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
         {
             txtPassword.UseSystemPasswordChar = !chkShowPassword.Checked;
         }
 
-        // ─── Menu Strip ───────────────────────────────────────────────
+        private void radioButtonMale_CheckedChanged(object sender, EventArgs e) => ValidateForm();
+        private void radioButtonFemale_CheckedChanged(object sender, EventArgs e) => ValidateForm();
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) => ValidateForm();
 
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            DialogResult response = MessageBox.Show(
-                "Do you want to exit the application?",
-                "Exit",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (response == DialogResult.Yes)
-                this.Close();
-        }
-
-        private void mnuBackToMainMenu_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmLogin frmLogin = new frmLogin();
-            frmLogin.ShowDialog();
-            this.Close();
-        }
-
-        private void frmEntrance_Load(object sender, EventArgs e)
-        {
-
-        }
+        private void btnClear_Click(object sender, EventArgs e) => ClearForm();
     }
 }
