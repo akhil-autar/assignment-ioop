@@ -31,6 +31,7 @@ namespace assignment.Helpers
         {
             return CurrentUser != null;
         }
+
     }
 }
 

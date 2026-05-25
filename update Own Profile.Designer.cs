@@ -140,7 +140,7 @@
             this.lblCurrentAccountName.ForeColor = System.Drawing.Color.DarkRed;
             this.lblCurrentAccountName.Location = new System.Drawing.Point(246, 284);
             this.lblCurrentAccountName.Name = "lblCurrentAccountName";
-            this.lblCurrentAccountName.Size = new System.Drawing.Size(0, 36);
+            this.lblCurrentAccountName.Size = new System.Drawing.Size(0, 24);
             this.lblCurrentAccountName.TabIndex = 17;
             // 
             // lblCurrentEmail
@@ -160,7 +160,7 @@
             this.lblCurrentEmailName.ForeColor = System.Drawing.Color.DarkRed;
             this.lblCurrentEmailName.Location = new System.Drawing.Point(246, 353);
             this.lblCurrentEmailName.Name = "lblCurrentEmailName";
-            this.lblCurrentEmailName.Size = new System.Drawing.Size(0, 36);
+            this.lblCurrentEmailName.Size = new System.Drawing.Size(0, 24);
             this.lblCurrentEmailName.TabIndex = 19;
             // 
             // lblCurrentPhone
@@ -180,7 +180,7 @@
             this.lblCurrentPhoneNumber.ForeColor = System.Drawing.Color.DarkRed;
             this.lblCurrentPhoneNumber.Location = new System.Drawing.Point(246, 420);
             this.lblCurrentPhoneNumber.Name = "lblCurrentPhoneNumber";
-            this.lblCurrentPhoneNumber.Size = new System.Drawing.Size(0, 36);
+            this.lblCurrentPhoneNumber.Size = new System.Drawing.Size(0, 24);
             this.lblCurrentPhoneNumber.TabIndex = 21;
             // 
             // lblCurrentRole
@@ -200,7 +200,7 @@
             this.lblCurrentRoleName.ForeColor = System.Drawing.Color.DarkRed;
             this.lblCurrentRoleName.Location = new System.Drawing.Point(246, 486);
             this.lblCurrentRoleName.Name = "lblCurrentRoleName";
-            this.lblCurrentRoleName.Size = new System.Drawing.Size(0, 36);
+            this.lblCurrentRoleName.Size = new System.Drawing.Size(0, 24);
             this.lblCurrentRoleName.TabIndex = 23;
             // 
             // lblCurrentGender
@@ -220,7 +220,7 @@
             this.lblCurrentGenderName.ForeColor = System.Drawing.Color.DarkRed;
             this.lblCurrentGenderName.Location = new System.Drawing.Point(246, 556);
             this.lblCurrentGenderName.Name = "lblCurrentGenderName";
-            this.lblCurrentGenderName.Size = new System.Drawing.Size(0, 36);
+            this.lblCurrentGenderName.Size = new System.Drawing.Size(0, 24);
             this.lblCurrentGenderName.TabIndex = 25;
             // 
             // lblNewUsername
@@ -303,7 +303,9 @@
             this.comboBox1.Items.AddRange(new object[] {
             "System Admin",
             "Manager",
-            "Chef"});
+            "Chef 1",
+            "Chef 2",
+            "Chef 3"});
             this.comboBox1.Location = new System.Drawing.Point(758, 482);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(195, 28);
@@ -498,7 +500,7 @@
             this.lblErrorUsername.ForeColor = System.Drawing.Color.DarkRed;
             this.lblErrorUsername.Location = new System.Drawing.Point(754, 313);
             this.lblErrorUsername.Name = "lblErrorUsername";
-            this.lblErrorUsername.Size = new System.Drawing.Size(0, 23);
+            this.lblErrorUsername.Size = new System.Drawing.Size(0, 15);
             this.lblErrorUsername.TabIndex = 77;
             // 
             // lblErrorEmail
@@ -508,7 +510,7 @@
             this.lblErrorEmail.ForeColor = System.Drawing.Color.DarkRed;
             this.lblErrorEmail.Location = new System.Drawing.Point(754, 383);
             this.lblErrorEmail.Name = "lblErrorEmail";
-            this.lblErrorEmail.Size = new System.Drawing.Size(0, 23);
+            this.lblErrorEmail.Size = new System.Drawing.Size(0, 15);
             this.lblErrorEmail.TabIndex = 78;
             // 
             // lblErrorPhone
@@ -518,7 +520,7 @@
             this.lblErrorPhone.ForeColor = System.Drawing.Color.DarkRed;
             this.lblErrorPhone.Location = new System.Drawing.Point(755, 443);
             this.lblErrorPhone.Name = "lblErrorPhone";
-            this.lblErrorPhone.Size = new System.Drawing.Size(0, 23);
+            this.lblErrorPhone.Size = new System.Drawing.Size(0, 15);
             this.lblErrorPhone.TabIndex = 79;
             // 
             // lblErrorNewPassword
@@ -528,7 +530,7 @@
             this.lblErrorNewPassword.ForeColor = System.Drawing.Color.DarkRed;
             this.lblErrorNewPassword.Location = new System.Drawing.Point(1518, 461);
             this.lblErrorNewPassword.Name = "lblErrorNewPassword";
-            this.lblErrorNewPassword.Size = new System.Drawing.Size(0, 23);
+            this.lblErrorNewPassword.Size = new System.Drawing.Size(0, 15);
             this.lblErrorNewPassword.TabIndex = 80;
             // 
             // lblErrorConfirmPassword
@@ -538,7 +540,7 @@
             this.lblErrorConfirmPassword.ForeColor = System.Drawing.Color.DarkRed;
             this.lblErrorConfirmPassword.Location = new System.Drawing.Point(1518, 600);
             this.lblErrorConfirmPassword.Name = "lblErrorConfirmPassword";
-            this.lblErrorConfirmPassword.Size = new System.Drawing.Size(0, 23);
+            this.lblErrorConfirmPassword.Size = new System.Drawing.Size(0, 15);
             this.lblErrorConfirmPassword.TabIndex = 81;
             // 
             // lblErrorCurrentPassword
@@ -548,7 +550,7 @@
             this.lblErrorCurrentPassword.ForeColor = System.Drawing.Color.DarkRed;
             this.lblErrorCurrentPassword.Location = new System.Drawing.Point(1518, 317);
             this.lblErrorCurrentPassword.Name = "lblErrorCurrentPassword";
-            this.lblErrorCurrentPassword.Size = new System.Drawing.Size(0, 23);
+            this.lblErrorCurrentPassword.Size = new System.Drawing.Size(0, 15);
             this.lblErrorCurrentPassword.TabIndex = 82;
             // 
             // frmUpdateOwnProfile

@@ -3,13 +3,14 @@ using System.Windows.Forms;
 using assignment.Helpers;
 using assignment.Models;
 using assignment.Repositories;
+using CHEF;
+using Gr8FoodSystem_Final;
+using prac;
 
 namespace assignment
 {
     public partial class frmLogin : Form
     {
-        // ─── Dependencies ─────────────────────────────────────────────
-        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
         private readonly UserRepository _userRepository;
 
         // ─── State ────────────────────────────────────────────────────
@@ -18,7 +19,7 @@ namespace assignment
         public frmLogin()
         {
             InitializeComponent();
-            _userRepository = new UserRepository(_connectionString);
+            _userRepository = new UserRepository();
         }
 
         // ─── Show/Hide Password ───────────────────────────────────────
@@ -29,7 +30,6 @@ namespace assignment
         }
 
         // ─── Login Button ─────────────────────────────────────────────
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             lblError.Text = "";
@@ -101,17 +101,25 @@ namespace assignment
                 case "System Admin":
                     nextForm = new frmSystemAdmin();
                     break;
-                    /*
+                
+                case "Customer":
+                    nextForm = new Form1();
+                    break;
                 case "Manager":
-                    nextForm = new frmManager();
+                    nextForm = new Managerdashboard();
                     break;
-                case "Cashier":
-                    nextForm = new frmCashier();
+                case "Chef":
+                    nextForm = new Chef_Dashboard();
                     break;
-                case "Kitchen Staff":
-                    nextForm = new frmKitchen();
-                    break;
-                    */
+                
+                    /*
+            case "Cashier":
+                nextForm = new frmCashier();
+                break;
+            case "Kitchen Staff":
+                nextForm = new frmKitchen();
+                break;
+                */
                 default:
                     MessageBox.Show($"No dashboard found for role: {role}",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

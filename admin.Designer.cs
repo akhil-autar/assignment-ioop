@@ -149,14 +149,14 @@
             // mnuLogout
             // 
             this.mnuLogout.Name = "mnuLogout";
-            this.mnuLogout.Size = new System.Drawing.Size(270, 34);
+            this.mnuLogout.Size = new System.Drawing.Size(159, 34);
             this.mnuLogout.Text = "Logout";
             this.mnuLogout.Click += new System.EventHandler(this.mnuLogout_Click);
             // 
             // MnuExit
             // 
             this.MnuExit.Name = "MnuExit";
-            this.MnuExit.Size = new System.Drawing.Size(270, 34);
+            this.MnuExit.Size = new System.Drawing.Size(159, 34);
             this.MnuExit.Text = "Exit";
             this.MnuExit.Click += new System.EventHandler(this.MnuExit_Click);
             // 
@@ -271,6 +271,7 @@
             this.btnViewSalesReport.TabIndex = 7;
             this.btnViewSalesReport.Text = "View Sales Report";
             this.btnViewSalesReport.UseVisualStyleBackColor = true;
+            this.btnViewSalesReport.Click += new System.EventHandler(this.btnViewSalesReport_Click);
             // 
             // btnUpdateUserProfile
             // 

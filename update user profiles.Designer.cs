@@ -362,7 +362,9 @@
             this.comboBox1.Items.AddRange(new object[] {
             "System Admin",
             "Manager",
-            "Chef"});
+            "Chef 1",
+            "Chef 2",
+            "Chef 3"});
             this.comboBox1.Location = new System.Drawing.Point(937, 75);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(231, 29);
@@ -440,7 +442,7 @@
             this.lblErrorUpdate.ForeColor = System.Drawing.Color.DarkRed;
             this.lblErrorUpdate.Location = new System.Drawing.Point(1231, 131);
             this.lblErrorUpdate.Name = "lblErrorUpdate";
-            this.lblErrorUpdate.Size = new System.Drawing.Size(0, 23);
+            this.lblErrorUpdate.Size = new System.Drawing.Size(0, 15);
             this.lblErrorUpdate.TabIndex = 54;
             // 
             // groupBox1

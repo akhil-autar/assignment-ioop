@@ -33,6 +33,7 @@
             this.pictureBoxBackToHome = new System.Windows.Forms.PictureBox();
             this.lblAddUserPortal = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblErrorPassword = new System.Windows.Forms.Label();
             this.lblErrorUsername = new System.Windows.Forms.Label();
             this.lblErrorPhone = new System.Windows.Forms.Label();
             this.lblPasswordStrength = new System.Windows.Forms.Label();
@@ -99,6 +100,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblErrorPassword);
             this.groupBox1.Controls.Add(this.lblErrorUsername);
             this.groupBox1.Controls.Add(this.lblErrorPhone);
             this.groupBox1.Controls.Add(this.lblPasswordStrength);
@@ -129,6 +131,16 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Proceed Here";
+            // 
+            // lblErrorPassword
+            // 
+            this.lblErrorPassword.AutoSize = true;
+            this.lblErrorPassword.Font = new System.Drawing.Font("Corbel", 6F);
+            this.lblErrorPassword.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblErrorPassword.Location = new System.Drawing.Point(44, 409);
+            this.lblErrorPassword.Name = "lblErrorPassword";
+            this.lblErrorPassword.Size = new System.Drawing.Size(0, 14);
+            this.lblErrorPassword.TabIndex = 28;
             // 
             // lblErrorUsername
             // 
@@ -352,7 +364,9 @@
             this.comboBox1.Items.AddRange(new object[] {
             "System Admin",
             "Manager",
-            "Chef"});
+            "Chef 1",
+            "Chef 2",
+            "Chef 3"});
             this.comboBox1.Location = new System.Drawing.Point(43, 98);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(231, 29);
@@ -430,5 +444,6 @@
         private System.Windows.Forms.Label lblPasswordStrength;
         private System.Windows.Forms.Label lblErrorPhone;
         private System.Windows.Forms.Label lblErrorUsername;
+        private System.Windows.Forms.Label lblErrorPassword;
     }
 }

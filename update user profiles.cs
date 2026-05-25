@@ -10,8 +10,6 @@ namespace assignment
     // All database operations are delegated to UserRepository (Separation of Concerns)
     public partial class frmUpdateUserProfiles : Form
     {
-        // ─── Dependencies ─────────────────────────────────────────────
-        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
         private readonly UserRepository _userRepository;
 
         // ─── State ────────────────────────────────────────────────────
@@ -21,7 +19,7 @@ namespace assignment
         public frmUpdateUserProfiles()
         {
             InitializeComponent();
-            _userRepository = new UserRepository(_connectionString);
+            _userRepository = new UserRepository();
             SetFieldsEnabled(false);
             btnUpdate.Enabled = false;
         }
@@ -124,7 +122,7 @@ namespace assignment
             if (!string.IsNullOrWhiteSpace(txtNewUsername.Text) &&
                 txtNewUsername.Text.Trim() != _currentUser.Username)
             {
-                if (!Validator.ValidateUsernameExists(txtNewUsername.Text.Trim(), _connectionString, out string usernameError))
+                if (!Validator.ValidateUsernameExists(txtNewUsername.Text.Trim(),out string usernameError))
                 {
                     lblErrorUsername.Text = usernameError;
                     return;
@@ -146,25 +144,24 @@ namespace assignment
                 IsActive = _currentUser.IsActive
             };
 
-            // Delegate profile update to UserRepository
-            bool profileUpdated = _userRepository.UpdateUser(updatedUser);
-
-            // Delegate password update to UserRepository only if a new password was entered
-            bool passwordUpdated = true;
-            if (!string.IsNullOrWhiteSpace(txtNewPassword.Text))
+            try
             {
-                passwordUpdated = _userRepository.ResetPassword(updatedUser.Id, txtNewPassword.Text.Trim());
-            }
+                // Delegate profile update to UserRepository
+                _userRepository.UpdateUser(updatedUser);
 
-            if (profileUpdated && passwordUpdated)
-            {
+                // Delegate password update to UserRepository only if a new password was entered
+                if (!string.IsNullOrWhiteSpace(txtNewPassword.Text))
+                {
+                    _userRepository.ResetPassword(updatedUser.Id, txtNewPassword.Text.Trim());
+                }
+
                 MessageBox.Show($"Profile for '{updatedUser.Username}' updated successfully!",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetForm();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Update failed. Please try again.",
+                MessageBox.Show("Update failed: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -246,7 +243,7 @@ namespace assignment
         private void txtNewUsername_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNewUsername.Text)) { lblErrorUsername.Text = ""; return; }
-            lblErrorUsername.Text = Validator.ValidateUsernameExists(txtNewUsername.Text.Trim(), _connectionString, out string err) ? "" : err;
+            lblErrorUsername.Text = Validator.ValidateUsernameExists(txtNewUsername.Text.Trim(),out string err) ? "" : err;
             UpdateButtonState();
         }
 

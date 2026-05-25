@@ -10,14 +10,12 @@ namespace assignment
     // All database operations are delegated to UserRepository (Separation of Concerns)
     public partial class frmRemoveUser : Form
     {
-        // ─── Dependencies ─────────────────────────────────────────────
-        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
         private readonly UserRepository _userRepository;
 
         public frmRemoveUser()
         {
             InitializeComponent();
-            _userRepository = new UserRepository(_connectionString);
+            _userRepository = new UserRepository();
         }
 
         // ─── Find User ────────────────────────────────────────────────
@@ -115,17 +113,17 @@ namespace assignment
             if (confirm != DialogResult.Yes) return;
 
             // Delegate the deletion to UserRepository
-            bool success = _userRepository.DeleteUser(user.Id);
-
-            if (success)
+            try
             {
+                _userRepository.DeleteUser(user.Id);
+
                 MessageBox.Show($"User '{user.Username}' deleted successfully.",
                     "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetForm();
             }
-            else
+            catch (Exception ex)
             {
-                lblError.Text = "Could not delete user. Please try again.";
+                lblError.Text = "Could not delete user: " + ex.Message;
             }
         }
 

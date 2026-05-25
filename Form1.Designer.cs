@@ -1,6 +1,6 @@
-﻿namespace assignment
+﻿namespace Gr8FoodSystem_Final
 {
-    partial class frmEntrance
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,438 +28,552 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEntrance));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblWelcome = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblWeakPassword = new System.Windows.Forms.Label();
-            this.chkShowPassword = new System.Windows.Forms.CheckBox();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
-            this.lblConfirmPassword = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.lblGender = new System.Windows.Forms.Label();
-            this.radioButtonFemale = new System.Windows.Forms.RadioButton();
-            this.radioButtonMale = new System.Windows.Forms.RadioButton();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblPhoneNumber = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblError = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuMain = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuBackToMainMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblErrorPassword = new System.Windows.Forms.Label();
-            this.lblErrorUsername = new System.Windows.Forms.Label();
-            this.lblErrorEmail = new System.Windows.Forms.Label();
-            this.lblErrorPhone = new System.Windows.Forms.Label();
-            this.lblPasswordStrength = new System.Windows.Forms.Label();
-            this.lblError3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.panelSidebar = new System.Windows.Forms.Panel();
+            this.panelOrderHistory = new System.Windows.Forms.Panel();
+            this.btnOrderHistory = new System.Windows.Forms.Label();
+            this.panelLogout = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panelDashboard = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelFeedback = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panelOrders = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.lblName = new System.Windows.Forms.Label();
+            this.labelNotification = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dgvOrders = new System.Windows.Forms.DataGridView();
+            this.colFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelRecentOrders = new System.Windows.Forms.Label();
+            this.panelStatus = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.labelStatus = new System.Windows.Forms.Label();
+            this.panelOrder = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblTotalOrders = new System.Windows.Forms.Label();
+            this.panelWallet = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.labelWallet = new System.Windows.Forms.Label();
+            this.panelWelcome = new System.Windows.Forms.Panel();
+            this.labelWelcome = new System.Windows.Forms.Label();
+            this.picLogo = new System.Windows.Forms.PictureBox();
+            this.panelSidebar.SuspendLayout();
+            this.panelOrderHistory.SuspendLayout();
+            this.panelLogout.SuspendLayout();
+            this.panelDashboard.SuspendLayout();
+            this.panelFeedback.SuspendLayout();
+            this.panelOrders.SuspendLayout();
+            this.panelMenu.SuspendLayout();
+            this.panelTop.SuspendLayout();
+            this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
+            this.panelStatus.SuspendLayout();
+            this.panelOrder.SuspendLayout();
+            this.panelWallet.SuspendLayout();
+            this.panelWelcome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // panelSidebar
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(141, 108);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(401, 226);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.panelSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelSidebar.Controls.Add(this.panelOrderHistory);
+            this.panelSidebar.Controls.Add(this.panelLogout);
+            this.panelSidebar.Controls.Add(this.panelDashboard);
+            this.panelSidebar.Controls.Add(this.panelFeedback);
+            this.panelSidebar.Controls.Add(this.panelOrders);
+            this.panelSidebar.Controls.Add(this.panelMenu);
+            this.panelSidebar.Controls.Add(this.picLogo);
+            this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSidebar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelSidebar.Location = new System.Drawing.Point(0, 0);
+            this.panelSidebar.Name = "panelSidebar";
+            this.panelSidebar.Size = new System.Drawing.Size(220, 611);
+            this.panelSidebar.TabIndex = 0;
             // 
-            // lblWelcome
+            // panelOrderHistory
             // 
-            this.lblWelcome.BackColor = System.Drawing.Color.Transparent;
-            this.lblWelcome.Font = new System.Drawing.Font("Century Gothic", 18F);
-            this.lblWelcome.Location = new System.Drawing.Point(217, 61);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(246, 43);
-            this.lblWelcome.TabIndex = 2;
-            this.lblWelcome.Text = "Welcome To,";
-            this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panelOrderHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelOrderHistory.Controls.Add(this.btnOrderHistory);
+            this.panelOrderHistory.Location = new System.Drawing.Point(0, 380);
+            this.panelOrderHistory.Name = "panelOrderHistory";
+            this.panelOrderHistory.Size = new System.Drawing.Size(180, 51);
+            this.panelOrderHistory.TabIndex = 5;
+            this.panelOrderHistory.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // groupBox1
+            // btnOrderHistory
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.lblError3);
-            this.groupBox1.Controls.Add(this.lblPasswordStrength);
-            this.groupBox1.Controls.Add(this.lblErrorPhone);
-            this.groupBox1.Controls.Add(this.lblErrorEmail);
-            this.groupBox1.Controls.Add(this.lblErrorUsername);
-            this.groupBox1.Controls.Add(this.lblErrorPassword);
-            this.groupBox1.Controls.Add(this.lblError);
-            this.groupBox1.Controls.Add(this.lblWeakPassword);
-            this.groupBox1.Controls.Add(this.chkShowPassword);
-            this.groupBox1.Controls.Add(this.txtPhoneNumber);
-            this.groupBox1.Controls.Add(this.btnRegister);
-            this.groupBox1.Controls.Add(this.txtConfirmPassword);
-            this.groupBox1.Controls.Add(this.lblConfirmPassword);
-            this.groupBox1.Controls.Add(this.txtPassword);
-            this.groupBox1.Controls.Add(this.lblPassword);
-            this.groupBox1.Controls.Add(this.lblGender);
-            this.groupBox1.Controls.Add(this.radioButtonFemale);
-            this.groupBox1.Controls.Add(this.radioButtonMale);
-            this.groupBox1.Controls.Add(this.txtEmail);
-            this.groupBox1.Controls.Add(this.lblEmail);
-            this.groupBox1.Controls.Add(this.lblPhoneNumber);
-            this.groupBox1.Controls.Add(this.txtUsername);
-            this.groupBox1.Controls.Add(this.lblUsername);
-            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(64, 314);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(559, 420);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Proceed Here";
+            this.btnOrderHistory.AutoSize = true;
+            this.btnOrderHistory.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrderHistory.ForeColor = System.Drawing.Color.White;
+            this.btnOrderHistory.Location = new System.Drawing.Point(15, 16);
+            this.btnOrderHistory.Name = "btnOrderHistory";
+            this.btnOrderHistory.Size = new System.Drawing.Size(152, 22);
+            this.btnOrderHistory.TabIndex = 1;
+            this.btnOrderHistory.Text = "🗓️ Order History\r\n";
+            this.btnOrderHistory.Click += new System.EventHandler(this.btnOrderHistory_Click);
             // 
-            // lblWeakPassword
+            // panelLogout
             // 
-            this.lblWeakPassword.AutoSize = true;
-            this.lblWeakPassword.Font = new System.Drawing.Font("Microsoft JhengHei", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWeakPassword.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblWeakPassword.Location = new System.Drawing.Point(95, 234);
-            this.lblWeakPassword.Name = "lblWeakPassword";
-            this.lblWeakPassword.Size = new System.Drawing.Size(0, 16);
-            this.lblWeakPassword.TabIndex = 20;
+            this.panelLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelLogout.Controls.Add(this.label6);
+            this.panelLogout.Location = new System.Drawing.Point(0, 450);
+            this.panelLogout.Name = "panelLogout";
+            this.panelLogout.Size = new System.Drawing.Size(180, 50);
+            this.panelLogout.TabIndex = 2;
+            this.panelLogout.Click += new System.EventHandler(this.panelLogout_Cick);
+            this.panelLogout.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogout_Paint);
             // 
-            // chkShowPassword
+            // label6
             // 
-            this.chkShowPassword.AutoSize = true;
-            this.chkShowPassword.BackColor = System.Drawing.Color.Transparent;
-            this.chkShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkShowPassword.Location = new System.Drawing.Point(10, 287);
-            this.chkShowPassword.Name = "chkShowPassword";
-            this.chkShowPassword.Size = new System.Drawing.Size(121, 21);
-            this.chkShowPassword.TabIndex = 8;
-            this.chkShowPassword.Text = "Show Password";
-            this.chkShowPassword.UseVisualStyleBackColor = false;
-            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(15, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 22);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "📤 Logout";
             // 
-            // txtPhoneNumber
+            // panelDashboard
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(317, 73);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(214, 27);
-            this.txtPhoneNumber.TabIndex = 19;
-            this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtPhoneNumber_TextChanged);
+            this.panelDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelDashboard.Controls.Add(this.label1);
+            this.panelDashboard.Location = new System.Drawing.Point(0, 100);
+            this.panelDashboard.Name = "panelDashboard";
+            this.panelDashboard.Size = new System.Drawing.Size(180, 50);
+            this.panelDashboard.TabIndex = 1;
+            this.panelDashboard.Click += new System.EventHandler(this.panelDashboard_Click);
+            this.panelDashboard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDashboard_Paint);
             // 
-            // btnRegister
+            // label1
             // 
-            this.btnRegister.Location = new System.Drawing.Point(214, 344);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(117, 50);
-            this.btnRegister.TabIndex = 18;
-            this.btnRegister.Text = "Register";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(15, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 22);
+            this.label1.TabIndex = 1;
+            this.label1.Text = " 📌 Dashboard";
             // 
-            // txtConfirmPassword
+            // panelFeedback
             // 
-            this.txtConfirmPassword.Location = new System.Drawing.Point(317, 254);
-            this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.Size = new System.Drawing.Size(214, 27);
-            this.txtConfirmPassword.TabIndex = 17;
-            this.txtConfirmPassword.UseSystemPasswordChar = true;
-            this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtConfirmPassword_TextChanged);
+            this.panelFeedback.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelFeedback.Controls.Add(this.label5);
+            this.panelFeedback.Location = new System.Drawing.Point(0, 310);
+            this.panelFeedback.Name = "panelFeedback";
+            this.panelFeedback.Size = new System.Drawing.Size(180, 50);
+            this.panelFeedback.TabIndex = 2;
+            this.panelFeedback.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFeedback_Paint);
             // 
-            // lblConfirmPassword
+            // label5
             // 
-            this.lblConfirmPassword.AutoSize = true;
-            this.lblConfirmPassword.Font = new System.Drawing.Font("Cambria", 9F);
-            this.lblConfirmPassword.Location = new System.Drawing.Point(313, 230);
-            this.lblConfirmPassword.Name = "lblConfirmPassword";
-            this.lblConfirmPassword.Size = new System.Drawing.Size(152, 21);
-            this.lblConfirmPassword.TabIndex = 16;
-            this.lblConfirmPassword.Text = "Confirm Password";
-            this.lblConfirmPassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(15, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 22);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "📝  Feedback";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // txtPassword
+            // panelOrders
             // 
-            this.txtPassword.Location = new System.Drawing.Point(10, 254);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(214, 27);
-            this.txtPassword.TabIndex = 15;
-            this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.panelOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelOrders.Controls.Add(this.label3);
+            this.panelOrders.Location = new System.Drawing.Point(0, 240);
+            this.panelOrders.Name = "panelOrders";
+            this.panelOrders.Size = new System.Drawing.Size(180, 50);
+            this.panelOrders.TabIndex = 3;
+            this.panelOrders.Click += new System.EventHandler(this.panelOrders_Click);
+            this.panelOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.panelOrders_Paint);
             // 
-            // lblPassword
+            // label3
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Cambria", 9F);
-            this.lblPassword.Location = new System.Drawing.Point(6, 230);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(86, 21);
-            this.lblPassword.TabIndex = 14;
-            this.lblPassword.Text = "Password";
-            this.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(15, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(132, 22);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "🛒  My Orders";
+            this.label3.Click += new System.EventHandler(this.panelOrders_Click);
             // 
-            // lblGender
+            // panelMenu
             // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.Font = new System.Drawing.Font("Cambria", 9F);
-            this.lblGender.Location = new System.Drawing.Point(313, 135);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(66, 21);
-            this.lblGender.TabIndex = 13;
-            this.lblGender.Text = "Gender";
-            this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelMenu.Controls.Add(this.label2);
+            this.panelMenu.Location = new System.Drawing.Point(0, 170);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(180, 51);
+            this.panelMenu.TabIndex = 2;
+            this.panelMenu.Click += new System.EventHandler(this.panelMenu_Click);
+            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
             // 
-            // radioButtonFemale
+            // label2
             // 
-            this.radioButtonFemale.AutoSize = true;
-            this.radioButtonFemale.Font = new System.Drawing.Font("Century Gothic", 6F);
-            this.radioButtonFemale.Location = new System.Drawing.Point(454, 165);
-            this.radioButtonFemale.Name = "radioButtonFemale";
-            this.radioButtonFemale.Size = new System.Drawing.Size(77, 21);
-            this.radioButtonFemale.TabIndex = 12;
-            this.radioButtonFemale.TabStop = true;
-            this.radioButtonFemale.Text = "Female";
-            this.radioButtonFemale.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(15, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(151, 22);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "📋 Browse Menu";
+            this.label2.Click += new System.EventHandler(this.panelMenu_Click);
             // 
-            // radioButtonMale
+            // panelTop
             // 
-            this.radioButtonMale.AutoSize = true;
-            this.radioButtonMale.Font = new System.Drawing.Font("Century Gothic", 6F);
-            this.radioButtonMale.Location = new System.Drawing.Point(317, 164);
-            this.radioButtonMale.Name = "radioButtonMale";
-            this.radioButtonMale.Size = new System.Drawing.Size(63, 21);
-            this.radioButtonMale.TabIndex = 11;
-            this.radioButtonMale.TabStop = true;
-            this.radioButtonMale.Text = "Male";
-            this.radioButtonMale.UseVisualStyleBackColor = true;
+            this.panelTop.Controls.Add(this.lblName);
+            this.panelTop.Controls.Add(this.labelNotification);
+            this.panelTop.Controls.Add(this.txtSearch);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(220, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(808, 70);
+            this.panelTop.TabIndex = 2;
             // 
-            // txtEmail
+            // lblName
             // 
-            this.txtEmail.Location = new System.Drawing.Point(10, 159);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(214, 27);
-            this.txtEmail.TabIndex = 10;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(589, 18);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(51, 21);
+            this.lblName.TabIndex = 2;
+            this.lblName.Text = "Duha";
+            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
-            // lblEmail
+            // labelNotification
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Cambria", 9F);
-            this.lblEmail.Location = new System.Drawing.Point(6, 135);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(54, 21);
-            this.lblEmail.TabIndex = 9;
-            this.lblEmail.Text = "Email";
-            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelNotification.AutoSize = true;
+            this.labelNotification.Location = new System.Drawing.Point(550, 18);
+            this.labelNotification.Name = "labelNotification";
+            this.labelNotification.Size = new System.Drawing.Size(33, 21);
+            this.labelNotification.TabIndex = 1;
+            this.labelNotification.Text = "🔔";
+            this.labelNotification.Click += new System.EventHandler(this.labelNotification_Click);
             // 
-            // lblPhoneNumber
+            // txtSearch
             // 
-            this.lblPhoneNumber.AutoSize = true;
-            this.lblPhoneNumber.Font = new System.Drawing.Font("Cambria", 9F);
-            this.lblPhoneNumber.Location = new System.Drawing.Point(313, 49);
-            this.lblPhoneNumber.Name = "lblPhoneNumber";
-            this.lblPhoneNumber.Size = new System.Drawing.Size(126, 21);
-            this.lblPhoneNumber.TabIndex = 7;
-            this.lblPhoneNumber.Text = "Phone Number";
+            this.txtSearch.Location = new System.Drawing.Point(300, 15);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.ReadOnly = true;
+            this.txtSearch.Size = new System.Drawing.Size(200, 29);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.Click += new System.EventHandler(this.txtSearch_Click);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // txtUsername
+            // panelMain
             // 
-            this.txtUsername.Location = new System.Drawing.Point(10, 73);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(214, 27);
-            this.txtUsername.TabIndex = 6;
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
+            this.panelMain.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelMain.Controls.Add(this.label7);
+            this.panelMain.Controls.Add(this.dgvOrders);
+            this.panelMain.Controls.Add(this.labelRecentOrders);
+            this.panelMain.Controls.Add(this.panelStatus);
+            this.panelMain.Controls.Add(this.panelOrder);
+            this.panelMain.Controls.Add(this.panelWallet);
+            this.panelMain.Controls.Add(this.panelWelcome);
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(220, 70);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(808, 541);
+            this.panelMain.TabIndex = 3;
+            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
-            // lblUsername
+            // label7
             // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Cambria", 9F);
-            this.lblUsername.Location = new System.Drawing.Point(6, 49);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(89, 21);
-            this.lblUsername.TabIndex = 5;
-            this.lblUsername.Text = "Username";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(100, 130);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(232, 21);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "You placed 3 orders this week!\r\n";
             // 
-            // panel1
+            // dgvOrders
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.lblWelcome);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(367, 71);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(688, 788);
-            this.panel1.TabIndex = 4;
+            this.dgvOrders.AllowUserToAddRows = false;
+            this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrders.BackgroundColor = System.Drawing.Color.White;
+            this.dgvOrders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvOrders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colFood,
+            this.colQuantity,
+            this.colPrice,
+            this.colStatus});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOrders.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvOrders.EnableHeadersVisualStyles = false;
+            this.dgvOrders.GridColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvOrders.Location = new System.Drawing.Point(100, 290);
+            this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.RowHeadersVisible = false;
+            this.dgvOrders.Size = new System.Drawing.Size(650, 220);
+            this.dgvOrders.TabIndex = 5;
+            this.dgvOrders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellContentClick);
+            this.dgvOrders.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvOrders_CellFormatting);
             // 
-            // lblError
+            // colFood
             // 
-            this.lblError.AutoSize = true;
-            this.lblError.BackColor = System.Drawing.Color.Transparent;
-            this.lblError.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
-            this.lblError.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblError.Location = new System.Drawing.Point(211, 397);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(0, 24);
-            this.lblError.TabIndex = 20;
+            this.colFood.HeaderText = "Food Name";
+            this.colFood.Name = "colFood";
             // 
-            // menuStrip1
+            // colQuantity
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuMain});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1489, 33);
-            this.menuStrip1.TabIndex = 5;
-            this.menuStrip1.Text = "menuStrip1";
+            this.colQuantity.HeaderText = "Quantity";
+            this.colQuantity.Name = "colQuantity";
             // 
-            // menuMain
+            // colPrice
             // 
-            this.menuMain.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuBackToMainMenu,
-            this.mnuExit});
-            this.menuMain.Name = "menuMain";
-            this.menuMain.Size = new System.Drawing.Size(73, 29);
-            this.menuMain.Text = "Menu";
+            this.colPrice.HeaderText = "Price";
+            this.colPrice.Name = "colPrice";
             // 
-            // mnuBackToMainMenu
+            // colStatus
             // 
-            this.mnuBackToMainMenu.Name = "mnuBackToMainMenu";
-            this.mnuBackToMainMenu.Size = new System.Drawing.Size(266, 34);
-            this.mnuBackToMainMenu.Text = "Back to Main Menu";
-            this.mnuBackToMainMenu.Click += new System.EventHandler(this.mnuBackToMainMenu_Click);
+            this.colStatus.HeaderText = "Status";
+            this.colStatus.Name = "colStatus";
             // 
-            // mnuExit
+            // labelRecentOrders
             // 
-            this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(266, 34);
-            this.mnuExit.Text = "Exit ";
-            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            this.labelRecentOrders.AutoSize = true;
+            this.labelRecentOrders.Location = new System.Drawing.Point(100, 260);
+            this.labelRecentOrders.Name = "labelRecentOrders";
+            this.labelRecentOrders.Size = new System.Drawing.Size(116, 21);
+            this.labelRecentOrders.TabIndex = 4;
+            this.labelRecentOrders.Text = "Recent Orders";
             // 
-            // lblErrorPassword
+            // panelStatus
             // 
-            this.lblErrorPassword.AutoSize = true;
-            this.lblErrorPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorPassword.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblErrorPassword.Location = new System.Drawing.Point(314, 284);
-            this.lblErrorPassword.Name = "lblErrorPassword";
-            this.lblErrorPassword.Size = new System.Drawing.Size(0, 23);
-            this.lblErrorPassword.TabIndex = 6;
+            this.panelStatus.BackColor = System.Drawing.Color.LightYellow;
+            this.panelStatus.Controls.Add(this.label12);
+            this.panelStatus.Controls.Add(this.labelStatus);
+            this.panelStatus.Location = new System.Drawing.Point(554, 160);
+            this.panelStatus.Name = "panelStatus";
+            this.panelStatus.Size = new System.Drawing.Size(180, 100);
+            this.panelStatus.TabIndex = 3;
             // 
-            // lblErrorUsername
+            // label12
             // 
-            this.lblErrorUsername.AutoSize = true;
-            this.lblErrorUsername.BackColor = System.Drawing.Color.Transparent;
-            this.lblErrorUsername.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
-            this.lblErrorUsername.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblErrorUsername.Location = new System.Drawing.Point(13, 103);
-            this.lblErrorUsername.Name = "lblErrorUsername";
-            this.lblErrorUsername.Size = new System.Drawing.Size(0, 24);
-            this.lblErrorUsername.TabIndex = 21;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(57, 56);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(94, 21);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "In Progress";
             // 
-            // lblErrorEmail
+            // labelStatus
             // 
-            this.lblErrorEmail.AutoSize = true;
-            this.lblErrorEmail.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
-            this.lblErrorEmail.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblErrorEmail.Location = new System.Drawing.Point(13, 189);
-            this.lblErrorEmail.Name = "lblErrorEmail";
-            this.lblErrorEmail.Size = new System.Drawing.Size(0, 24);
-            this.lblErrorEmail.TabIndex = 22;
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStatus.Location = new System.Drawing.Point(57, 26);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(86, 21);
+            this.labelStatus.TabIndex = 0;
+            this.labelStatus.Text = "Last Order";
             // 
-            // lblErrorPhone
+            // panelOrder
             // 
-            this.lblErrorPhone.AutoSize = true;
-            this.lblErrorPhone.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
-            this.lblErrorPhone.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblErrorPhone.Location = new System.Drawing.Point(314, 103);
-            this.lblErrorPhone.Name = "lblErrorPhone";
-            this.lblErrorPhone.Size = new System.Drawing.Size(0, 24);
-            this.lblErrorPhone.TabIndex = 23;
+            this.panelOrder.BackColor = System.Drawing.Color.PeachPuff;
+            this.panelOrder.Controls.Add(this.label10);
+            this.panelOrder.Controls.Add(this.lblTotalOrders);
+            this.panelOrder.Location = new System.Drawing.Point(320, 160);
+            this.panelOrder.Name = "panelOrder";
+            this.panelOrder.Size = new System.Drawing.Size(180, 100);
+            this.panelOrder.TabIndex = 2;
             // 
-            // lblPasswordStrength
+            // label10
             // 
-            this.lblPasswordStrength.AutoSize = true;
-            this.lblPasswordStrength.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
-            this.lblPasswordStrength.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblPasswordStrength.Location = new System.Drawing.Point(158, 290);
-            this.lblPasswordStrength.Name = "lblPasswordStrength";
-            this.lblPasswordStrength.Size = new System.Drawing.Size(0, 24);
-            this.lblPasswordStrength.TabIndex = 24;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(57, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(19, 21);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "5";
             // 
-            // lblError3
+            // lblTotalOrders
             // 
-            this.lblError3.AutoSize = true;
-            this.lblError3.Font = new System.Drawing.Font("Microsoft JhengHei", 6F);
-            this.lblError3.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblError3.Location = new System.Drawing.Point(314, 284);
-            this.lblError3.Name = "lblError3";
-            this.lblError3.Size = new System.Drawing.Size(0, 24);
-            this.lblError3.TabIndex = 21;
+            this.lblTotalOrders.AutoSize = true;
+            this.lblTotalOrders.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalOrders.Location = new System.Drawing.Point(57, 26);
+            this.lblTotalOrders.Name = "lblTotalOrders";
+            this.lblTotalOrders.Size = new System.Drawing.Size(99, 21);
+            this.lblTotalOrders.TabIndex = 0;
+            this.lblTotalOrders.Text = "Total Orders";
             // 
-            // frmEntrance
+            // panelWallet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1489, 946);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmEntrance";
+            this.panelWallet.BackColor = System.Drawing.Color.MintCream;
+            this.panelWallet.Controls.Add(this.label9);
+            this.panelWallet.Controls.Add(this.labelWallet);
+            this.panelWallet.Location = new System.Drawing.Point(100, 160);
+            this.panelWallet.Name = "panelWallet";
+            this.panelWallet.Size = new System.Drawing.Size(180, 100);
+            this.panelWallet.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(57, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(88, 21);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "RM 120.00";
+            // 
+            // labelWallet
+            // 
+            this.labelWallet.AutoSize = true;
+            this.labelWallet.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWallet.Location = new System.Drawing.Point(57, 26);
+            this.labelWallet.Name = "labelWallet";
+            this.labelWallet.Size = new System.Drawing.Size(55, 21);
+            this.labelWallet.TabIndex = 0;
+            this.labelWallet.Text = "Wallet";
+            // 
+            // panelWelcome
+            // 
+            this.panelWelcome.BackColor = System.Drawing.Color.White;
+            this.panelWelcome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelWelcome.Controls.Add(this.labelWelcome);
+            this.panelWelcome.Location = new System.Drawing.Point(100, 30);
+            this.panelWelcome.Name = "panelWelcome";
+            this.panelWelcome.Size = new System.Drawing.Size(700, 90);
+            this.panelWelcome.TabIndex = 0;
+            // 
+            // labelWelcome
+            // 
+            this.labelWelcome.AutoSize = true;
+            this.labelWelcome.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWelcome.Location = new System.Drawing.Point(20, 20);
+            this.labelWelcome.Name = "labelWelcome";
+            this.labelWelcome.Size = new System.Drawing.Size(260, 34);
+            this.labelWelcome.TabIndex = 0;
+            this.labelWelcome.Text = "Welcome Duha,\r\nReady to order something delicious today?\r\n";
+            // 
+            // picLogo
+            // 
+  
+            this.picLogo.Location = new System.Drawing.Point(0, 0);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(220, 100);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picLogo.TabIndex = 0;
+            this.picLogo.TabStop = false;
+            // 
+            // Form1
+            // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1028, 611);
+            this.Controls.Add(this.panelMain);
+            this.Controls.Add(this.panelTop);
+            this.Controls.Add(this.panelSidebar);
+            this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Register New Account";
-            this.Load += new System.EventHandler(this.frmEntrance_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.Text = "CustomerDashboard";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.panelSidebar.ResumeLayout(false);
+            this.panelOrderHistory.ResumeLayout(false);
+            this.panelOrderHistory.PerformLayout();
+            this.panelLogout.ResumeLayout(false);
+            this.panelLogout.PerformLayout();
+            this.panelDashboard.ResumeLayout(false);
+            this.panelDashboard.PerformLayout();
+            this.panelFeedback.ResumeLayout(false);
+            this.panelFeedback.PerformLayout();
+            this.panelOrders.ResumeLayout(false);
+            this.panelOrders.PerformLayout();
+            this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
+            this.panelTop.ResumeLayout(false);
+            this.panelTop.PerformLayout();
+            this.panelMain.ResumeLayout(false);
+            this.panelMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
+            this.panelStatus.ResumeLayout(false);
+            this.panelStatus.PerformLayout();
+            this.panelOrder.ResumeLayout(false);
+            this.panelOrder.PerformLayout();
+            this.panelWallet.ResumeLayout(false);
+            this.panelWallet.PerformLayout();
+            this.panelWelcome.ResumeLayout(false);
+            this.panelWelcome.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblPhoneNumber;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Label lblGender;
-        private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.TextBox txtConfirmPassword;
-        private System.Windows.Forms.Label lblConfirmPassword;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem menuMain;
-        private System.Windows.Forms.ToolStripMenuItem mnuBackToMainMenu;
-        private System.Windows.Forms.ToolStripMenuItem mnuExit;
-        private System.Windows.Forms.RadioButton radioButtonFemale;
-        private System.Windows.Forms.RadioButton radioButtonMale;
-        private System.Windows.Forms.TextBox txtPhoneNumber;
-        private System.Windows.Forms.CheckBox chkShowPassword;
-        private System.Windows.Forms.Label lblError;
-        private System.Windows.Forms.Label lblWeakPassword;
-        private System.Windows.Forms.Label lblErrorPassword;
-        private System.Windows.Forms.Label lblErrorUsername;
-        private System.Windows.Forms.Label lblErrorEmail;
-        private System.Windows.Forms.Label lblErrorPhone;
-        private System.Windows.Forms.Label lblPasswordStrength;
-        private System.Windows.Forms.Label lblError3;
+        private System.Windows.Forms.Panel panelSidebar;
+        private System.Windows.Forms.PictureBox picLogo;
+        private System.Windows.Forms.Panel panelDashboard;
+        private System.Windows.Forms.Panel panelFeedback;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panelOrders;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelLogout;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panelTop;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label labelNotification;
+        private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Panel panelWelcome;
+        private System.Windows.Forms.Label labelWelcome;
+        private System.Windows.Forms.Panel panelWallet;
+        private System.Windows.Forms.Panel panelOrder;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblTotalOrders;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelWallet;
+        private System.Windows.Forms.Panel panelStatus;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelStatus;
+        private System.Windows.Forms.Label labelRecentOrders;
+        private System.Windows.Forms.DataGridView dgvOrders;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFood;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panelOrderHistory;
+        private System.Windows.Forms.Label btnOrderHistory;
     }
 }
 

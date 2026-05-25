@@ -1,8 +1,7 @@
-﻿using System;
+﻿using assignment.Repositories;
+using System;
 using System.Data;
 using System.Windows.Forms;
-using assignment.Helpers;
-using assignment.Repositories;
 
 namespace assignment
 {
@@ -11,14 +10,12 @@ namespace assignment
     // and UserRepository for any additional filtering or stat display.
     public partial class frmViewAllAccounts : Form
     {
-        // ─── Dependencies ─────────────────────────────────────────────
-        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
         private readonly UserRepository _userRepository;
 
         public frmViewAllAccounts()
         {
             InitializeComponent();
-            _userRepository = new UserRepository(_connectionString);
+            _userRepository = new UserRepository();
         }
 
         // ─── Form Load ────────────────────────────────────────────────
@@ -56,7 +53,7 @@ namespace assignment
             }
 
             dataGridView1.DataSource = dt;
-        
+
 
             // Hide the password column from the grid for security
             // Passwords (even hashed) should never be visible in a UI grid

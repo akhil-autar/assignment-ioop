@@ -53,18 +53,51 @@
     <Compile Include="Add User.Designer.cs">
       <DependentUpon>Add User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Add_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_menu.Designer.cs">
+      <DependentUpon>Add_menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="admin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="admin.Designer.cs">
       <DependentUpon>admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="BrowseMenuFinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowseMenuFinal.Designer.cs">
+      <DependentUpon>BrowseMenuFinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cart.cs" />
     <Compile Include="Change Password.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Change Password.Designer.cs">
       <DependentUpon>Change Password.cs</DependentUpon>
     </Compile>
+    <Compile Include="Changes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Changes.Designer.cs">
+      <DependentUpon>Changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chef Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chef Dashboard.Designer.cs">
+      <DependentUpon>Chef Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="Feedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feedback.Designer.cs">
+      <DependentUpon>Feedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeedbackClass.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,13 +109,72 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GR8FoodDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="GR8FoodDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GR8FoodDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="loginGR8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="loginGR8.Designer.cs">
+      <DependentUpon>loginGR8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager.cs" />
+    <Compile Include="Managerdashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Managerdashboard.Designer.cs">
+      <DependentUpon>Managerdashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerFeedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagerFeedback.Designer.cs">
+      <DependentUpon>ManagerFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerFeedbackClass.cs" />
+    <Compile Include="Manage_Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_Menu.Designer.cs">
+      <DependentUpon>Manage_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manage_Orders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_Orders.Designer.cs">
+      <DependentUpon>Manage_Orders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="menu.cs" />
+    <Compile Include="MenuItem.cs" />
+    <Compile Include="MenuService.cs" />
+    <Compile Include="MyOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyOrders.Designer.cs">
+      <DependentUpon>MyOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderHistory.Designer.cs">
+      <DependentUpon>OrderHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderService.cs" />
     <Compile Include="Passwordhelper.cs" />
+    <Compile Include="Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profile.Designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Remove User.cs">
@@ -91,7 +183,21 @@
     <Compile Include="Remove User.Designer.cs">
       <DependentUpon>Remove User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Remove_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Remove_menu.Designer.cs">
+      <DependentUpon>Remove_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales.cs" />
+    <Compile Include="SalesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesReport.Designer.cs">
+      <DependentUpon>SalesReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sessionmanager.cs" />
+    <Compile Include="ShiftHelper.cs" />
     <Compile Include="update Own Profile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,9 +210,14 @@
     <Compile Include="update user profiles.Designer.cs">
       <DependentUpon>update user profiles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Update_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update_menu.Designer.cs">
+      <DependentUpon>Update_menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="Userrepository.cs" />
-    <Compile Include="Validation.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="view all accounts.cs">
       <SubType>Form</SubType>
@@ -114,20 +225,66 @@
     <Compile Include="view all accounts.Designer.cs">
       <DependentUpon>view all accounts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Wallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wallet.Designer.cs">
+      <DependentUpon>Wallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WalletReportClass.cs" />
     <EmbeddedResource Include="Add User.resx">
       <DependentUpon>Add User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add_menu.resx">
+      <DependentUpon>Add_menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="admin.resx">
       <DependentUpon>admin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BrowseMenuFinal.resx">
+      <DependentUpon>BrowseMenuFinal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Change Password.resx">
       <DependentUpon>Change Password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Changes.resx">
+      <DependentUpon>Changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chef Dashboard.resx">
+      <DependentUpon>Chef Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feedback.resx">
+      <DependentUpon>Feedback.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loginGR8.resx">
+      <DependentUpon>loginGR8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Managerdashboard.resx">
+      <DependentUpon>Managerdashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagerFeedback.resx">
+      <DependentUpon>ManagerFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage_Menu.resx">
+      <DependentUpon>Manage_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage_Orders.resx">
+      <DependentUpon>Manage_Orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyOrders.resx">
+      <DependentUpon>MyOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderHistory.resx">
+      <DependentUpon>OrderHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -137,9 +294,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Remove User.resx">
       <DependentUpon>Remove User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Remove_menu.resx">
+      <DependentUpon>Remove_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesReport.resx">
+      <DependentUpon>SalesReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="update Own Profile.resx">
       <DependentUpon>update Own Profile.cs</DependentUpon>
@@ -147,8 +311,14 @@
     <EmbeddedResource Include="update user profiles.resx">
       <DependentUpon>update user profiles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Update_menu.resx">
+      <DependentUpon>Update_menu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view all accounts.resx">
       <DependentUpon>view all accounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wallet.resx">
+      <DependentUpon>Wallet.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GR8FoodDataSet.xsc">
       <DependentUpon>GR8FoodDataSet.xsd</DependentUpon>
@@ -160,6 +330,17 @@
     </None>
     <None Include="GR8FoodDataSet.xss">
       <DependentUpon>GR8FoodDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GR8FoodDataSet1.xsc">
+      <DependentUpon>GR8FoodDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="GR8FoodDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GR8FoodDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GR8FoodDataSet1.xss">
+      <DependentUpon>GR8FoodDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

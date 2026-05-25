@@ -9,14 +9,12 @@ namespace assignment
     // All data retrieval is delegated to UserRepository (Separation of Concerns)
     public partial class frmSystemAdmin : Form
     {
-        // ─── Dependencies ─────────────────────────────────────────────
-        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
         private readonly UserRepository _userRepository;
 
         public frmSystemAdmin()
         {
             InitializeComponent();
-            _userRepository = new UserRepository(_connectionString);
+            _userRepository = new UserRepository();
 
             LoadDashboard();
         }
@@ -146,6 +144,13 @@ namespace assignment
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnViewSalesReport_Click(object sender, EventArgs e)
+        {
+            frmSalesReport frmSalesReport = new frmSalesReport();
+            frmSalesReport.ShowDialog();
+            this.Close();
         }
     }
 }

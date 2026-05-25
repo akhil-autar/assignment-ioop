@@ -11,14 +11,12 @@ namespace assignment
     // All logic is delegated to UserRepository, Validator, and PasswordHelper (Separation of Concerns)
     public partial class frmAddUser : Form
     {
-        // Dependencies injected via constructor (Dependency principle)
         private readonly UserRepository _userRepository;
-        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
 
         public frmAddUser()
         {
             InitializeComponent();
-            _userRepository = new UserRepository(_connectionString);
+            _userRepository = new UserRepository();
             btnAddUser.Enabled = false;
         }
 
@@ -47,18 +45,16 @@ namespace assignment
             );
 
             // Delegate the database operation to UserRepository (not the form's responsibility)
-            bool success = _userRepository.AddUser(newUser);
-
-            if (success)
+            try
             {
+                _userRepository.AddUser(newUser);
                 MessageBox.Show($"User '{newUser.Username}' added successfully!", "Success",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Failed to add user. Please try again.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
@@ -70,7 +66,7 @@ namespace assignment
         {
             string error;
 
-            bool usernameOk = Validator.ValidateUsernameExists(txtUsername.Text.Trim(), _connectionString, out error);
+            bool usernameOk = Validator.ValidateUsernameExists(txtUsername.Text.Trim(), out error);
             bool emailOk = Validator.ValidateEmail(txtEmail.Text.Trim(), out error);
             bool passwordOk = Validator.ValidatePassword(txtPassword.Text.Trim(), out error);
             bool phoneOk = Validator.ValidatePhone(txtPhoneNumber.Text.Trim(), out error);
@@ -100,6 +96,7 @@ namespace assignment
             lblErrorEmail.Text = "";
             lblErrorPhone.Text = "";
             lblError3.Text = "";
+            lblErrorPassword.Text = "";
             btnAddUser.Enabled = false;
         }
 
@@ -108,8 +105,10 @@ namespace assignment
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
             ValidateForm();
-            lblErrorUsername.Text = Validator.ValidateUsernameExists(txtUsername.Text.Trim(), _connectionString, out string err)
+            lblErrorUsername.Text = Validator.ValidateUsernameExists(txtUsername.Text.Trim(), out string err)
                 ? "" : err;
+
+
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
@@ -128,7 +127,6 @@ namespace assignment
         {
             ValidateForm();
 
-            // Show password strength using PasswordHelper (delegating logic to the helper class)
             string strength = PasswordHelper.GetStrength(txtPassword.Text.Trim());
             lblPasswordStrength.Text = string.IsNullOrEmpty(strength) ? "" : $"Strength: {strength}";
             if (strength == "Weak") lblPasswordStrength.ForeColor = Color.Red;
@@ -137,7 +135,11 @@ namespace assignment
             else if (strength == "Strong") lblPasswordStrength.ForeColor = Color.Green;
             else lblPasswordStrength.ForeColor = Color.Gray;
 
-            // Re-validate confirm password if it already has a value
+            // Show password requirement error in its own label
+            bool passwordOk = Validator.ValidatePassword(txtPassword.Text.Trim(), out string err);
+            lblErrorPassword.Text = passwordOk ? "" : err;
+            lblErrorPassword.ForeColor = Color.Red;
+
             if (!string.IsNullOrEmpty(txtConfirmPassword.Text))
                 txtConfirmPassword_TextChanged(sender, e);
         }
@@ -147,7 +149,10 @@ namespace assignment
             ValidateForm();
             lblError3.Text = txtConfirmPassword.Text.Trim() == txtPassword.Text.Trim()
                 ? "" : "Passwords do not match.";
+            lblError3.ForeColor = Color.Red;
         }
+
+
 
         private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
         {

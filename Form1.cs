@@ -1,164 +1,237 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using assignment.Helpers;
-using assignment.Models;
-using assignment.Repositories;
 
-namespace assignment
+namespace Gr8FoodSystem_Final
 {
-    // Customer self-registration form.
-    // Role is hardcoded to "Customer" — customers cannot choose their own role.
-    // All database operations delegated to UserRepository (Separation of Concerns)
-    public partial class frmEntrance : Form
+    public partial class Form1 : Form
     {
-        // ─── Dependencies ─────────────────────────────────────────────
-        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
-        private readonly UserRepository _userRepository;
-
-        public frmEntrance()
+        public Form1()
         {
             InitializeComponent();
-            _userRepository = new UserRepository(_connectionString);
-            btnRegister.Enabled = false;
+        }
+        private void OpenForm(Form form)
+        {
+            panelMain.Controls.Clear();
+
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+
+            panelMain.Controls.Add(form);
+
+            form.Show();
         }
 
-        // ─── Register Button ──────────────────────────────────────────
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void panelDashboard_MouseEnter(object sender, EventArgs e)
         {
-            // Build a User object from the form fields
-            // Role is always "Customer" for self-registration — admin assigns all other roles
-            User newCustomer = new User(
-                username: txtUsername.Text.Trim(),
-                password: txtPassword.Text.Trim(),
-                role: "Customer",
-                email: txtEmail.Text.Trim(),
-                phoneNumber: txtPhoneNumber.Text.Trim(),
-                gender: radioButtonMale.Checked ? "Male" : "Female"
-            );
+            panelDashboard.BackColor = Color.FromArgb(50, 150, 100);
+        }
 
-            // Delegate database operation to UserRepository
-            // Password is hashed automatically inside AddUser()
-            bool success = _userRepository.AddUser(newCustomer);
+        private void panelDashboard_MouseLeave(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(30, 30, 47);
+        }
 
-            if (success)
+        private void panelMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void panelMenu_MouseEnter(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(50, 150, 100);
+        }
+
+        private void panelMenu_MouseLeave(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(30, 30, 47);
+        }
+
+        private void panelOrders_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void panelOrders_MouseEnter(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(50, 150, 100);
+        }
+
+        private void panelOrders_MouseLeave(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(30, 30, 47);
+        }
+
+        private void panelProfile_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void panelProfile_MouseEnter(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(50, 150, 100);
+        }
+
+        private void panelProfile_MouseLeave(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(30, 30, 47);
+        }
+
+        private void panelFeedback_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void panelFeedback_MouseEnter(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(50, 150, 100);
+        }
+
+        private void panelFeedback_MouseLeave(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(30, 30, 47);
+        }
+
+        private void panelLogout_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void panelLogout_MouseEnter(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(50, 150, 100);
+        }
+
+        private void panelLogout_MouseLeave(object sender, EventArgs e)
+        {
+            panelDashboard.BackColor = Color.FromArgb(30, 30, 47);
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        { 
+            dgvOrders.Rows.Add("Burger", "2", "RM 15", "Completed");
+            dgvOrders.Rows.Add("Pizza", "1", "RM 20", "In Progress");
+            dgvOrders.Rows.Add("Pasta", "3", "RM 25", "Completed");
+
+        }
+        
+        
+        private void dgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void dgvOrders_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvOrders.Columns[e.ColumnIndex].Name == "colStatus")
             {
-                MessageBox.Show("Account created successfully! Please log in.",
-                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Redirect to login after successful registration
-                this.Hide();
-                frmLogin frmLogin = new frmLogin();
-                frmLogin.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Registration failed. Please try again.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (e.Value.ToString() == "Completed")
+                {
+                    e.CellStyle.BackColor = Color.LightGreen;
+                }
+                else if (e.Value.ToString() == "In Progress")
+                {
+                    e.CellStyle.BackColor = Color.LightSalmon;
+                }
             }
         }
 
-        // ─── Form Validation ──────────────────────────────────────────
-
-        // Enables the register button only when all fields are valid
-        private void ValidateForm()
+        private void panelMenu_Click(object sender, EventArgs e)
         {
-            string error;
-
-            bool usernameOk = Validator.ValidateUsernameExists(txtUsername.Text.Trim(), _connectionString, out error);
-            bool emailOk = Validator.ValidateEmail(txtEmail.Text.Trim(), out error);
-            bool passwordOk = Validator.ValidatePassword(txtPassword.Text.Trim(), out error);
-            bool phoneOk = Validator.ValidatePhone(txtPhoneNumber.Text.Trim(), out error);
-            bool confirmOk = txtConfirmPassword.Text.Trim() == txtPassword.Text.Trim()
-                                   && !string.IsNullOrEmpty(txtConfirmPassword.Text.Trim());
-            bool genderOk = radioButtonMale.Checked || radioButtonFemale.Checked;
-
-            btnRegister.Enabled = usernameOk && emailOk && passwordOk && phoneOk && confirmOk && genderOk;
+            panelMain.Controls.Clear();
+            OpenForm(new BrowseMenuFinal());
         }
 
-        // ─── Field Change Events ──────────────────────────────────────
-
-        private void txtUsername_TextChanged(object sender, EventArgs e)
+        private void panelOrders_Click(object sender, EventArgs e)
         {
-            ValidateForm();
-            lblErrorUsername.Text = Validator.ValidateUsernameExists(txtUsername.Text.Trim(), _connectionString, out string err)
-                ? "" : err;
+            panelMain.Controls.Clear();
+            OpenForm(new MyOrders());
         }
 
-        private void txtEmail_TextChanged(object sender, EventArgs e)
+        private void panelProfile_Click(object sender, EventArgs e)
         {
-            ValidateForm();
-            lblErrorEmail.Text = Validator.ValidateEmail(txtEmail.Text.Trim(), out string err) ? "" : err;
+            panelMain.Controls.Clear();
+            OpenForm(new Profile());
         }
 
-        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            ValidateForm();
-            lblErrorPhone.Text = Validator.ValidatePhone(txtPhoneNumber.Text.Trim(), out string err) ? "" : err;
+
         }
 
-        private void txtPassword_TextChanged(object sender, EventArgs e)
+        private void btnOrderHistory_Click(object sender, EventArgs e)
         {
-            ValidateForm();
-
-            // Show password strength using PasswordHelper
-            string strength = PasswordHelper.GetStrength(txtPassword.Text.Trim());
-            lblPasswordStrength.Text = string.IsNullOrEmpty(strength) ? "" : $"Strength: {strength}";
-            if (strength == "Weak") lblPasswordStrength.ForeColor = Color.Red;
-            else if (strength == "Fair") lblPasswordStrength.ForeColor = Color.Orange;
-            else if (strength == "Good") lblPasswordStrength.ForeColor = Color.DodgerBlue;
-            else if (strength == "Strong") lblPasswordStrength.ForeColor = Color.Green;
-            else lblPasswordStrength.ForeColor = Color.Gray;
-
-            // Re-check confirm password if already filled
-            if (!string.IsNullOrEmpty(txtConfirmPassword.Text))
-                txtConfirmPassword_TextChanged(sender, e);
+            panelMain.Controls.Clear();
+            OpenForm(new OrderHistory());
         }
 
-        private void txtConfirmPassword_TextChanged(object sender, EventArgs e)
+        private void label5_Click(object sender, EventArgs e)
         {
-            ValidateForm();
-            lblErrorPassword.Text = txtConfirmPassword.Text.Trim() == txtPassword.Text.Trim()
-                ? "" : "Passwords do not match.";
+            panelMain.Controls.Clear();
+            OpenForm(new Feedback());
         }
 
-        private void radioButtonMale_CheckedChanged(object sender, EventArgs e) => ValidateForm();
-        private void radioButtonFemale_CheckedChanged(object sender, EventArgs e) => ValidateForm();
-
-        // ─── Show/Hide Password ───────────────────────────────────────
-
-        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
+        private void panelDashboard_Paint(object sender, PaintEventArgs e)
         {
-            txtPassword.UseSystemPasswordChar = !chkShowPassword.Checked;
+
         }
 
-        // ─── Menu Strip ───────────────────────────────────────────────
-
-        private void mnuExit_Click(object sender, EventArgs e)
+        private void panelDashboard_Click(object sender, EventArgs e)
         {
-            DialogResult response = MessageBox.Show(
-                "Do you want to exit the application?",
-                "Exit",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (response == DialogResult.Yes)
-                this.Close();
+            
+            
         }
 
-        private void mnuBackToMainMenu_Click(object sender, EventArgs e)
+        
+
+        private void panelLogout_Cick(object sender, EventArgs e)
+        
         {
-            this.Hide();
-            frmLogin frmLogin = new frmLogin();
-            frmLogin.ShowDialog();
-            this.Close();
+            Application.Exit();
         }
 
-        private void frmEntrance_Load(object sender, EventArgs e)
+        private void lblName_Click(object sender, EventArgs e)
+        {
+            panelMain.Controls.Clear();
+
+            Profile p = new Profile();
+
+            panelMain.Controls.Add(p);
+
+            p.Show();
+        }
+
+        private void labelNotification_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("No new notifications.");
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            
+            MessageBox.Show("Search feature coming soon.");
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Search feature coming soon.");
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
     }
-}
+    }
+    
+
+        
+

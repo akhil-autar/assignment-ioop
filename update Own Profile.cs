@@ -8,8 +8,6 @@ namespace assignment
 {
     public partial class frmUpdateOwnProfile : Form
     {
-        // ─── Dependencies ─────────────────────────────────────────────
-        private readonly string _connectionString = "Data Source=localhost;Initial Catalog=GR8Food;Integrated Security=True;TrustServerCertificate=True";
         private readonly UserRepository _userRepository;
 
         // ─── State ────────────────────────────────────────────────────
@@ -20,7 +18,7 @@ namespace assignment
         public frmUpdateOwnProfile()
         {
             InitializeComponent();
-            _userRepository = new UserRepository(_connectionString);
+            _userRepository = new UserRepository();
             LoadAccountDetails();
             btnUpdate.Enabled = false;
             btnUpdatePassword.Enabled = false;
@@ -81,7 +79,7 @@ namespace assignment
             if (!string.IsNullOrWhiteSpace(txtNewUsername.Text) &&
                 txtNewUsername.Text.Trim() != _currentAccount.Username)
             {
-                if (!Validator.ValidateUsernameExists(txtNewUsername.Text.Trim(), _connectionString, out string usernameError))
+                if (!Validator.ValidateUsernameExists(txtNewUsername.Text.Trim(), out string usernameError))
                 {
                     lblErrorUsername.Text = usernameError;
                     return;
@@ -102,23 +100,22 @@ namespace assignment
                 IsActive = _currentAccount.IsActive
             };
 
-            bool profileUpdated = _userRepository.UpdateUser(updatedUser);
-
-            if (profileUpdated)
+            try
             {
+                _userRepository.UpdateUser(updatedUser);
+
                 // Update SessionManager so the dashboard reflects the new username immediately
                 SessionManager.Login(updatedUser);
 
-                MessageBox.Show($"Profile updated successfully!",
+                MessageBox.Show("Profile updated successfully!",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ResetForm();
-                // Reload the display labels with the new values
                 LoadAccountDetails();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Update failed. Please try again.",
+                MessageBox.Show("Update failed: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -149,18 +146,17 @@ namespace assignment
                 lblErrorConfirmPassword.Text = "Passwords do not match.";
                 return;
             }
-
-            bool passwordUpdated = _userRepository.ResetPassword(_currentAccount.Id, txtNewPassword.Text.Trim());
-
-            if (passwordUpdated)
+            try
             {
+                _userRepository.ResetPassword(_currentAccount.Id, txtNewPassword.Text.Trim());
+
                 MessageBox.Show("Password updated successfully!",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetPasswordFields();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Password update failed. Please try again.",
+                MessageBox.Show("Password update failed: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -208,7 +204,7 @@ namespace assignment
         private void txtNewUsername_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNewUsername.Text)) { lblErrorUsername.Text = ""; UpdateButtonState(); return; }
-            lblErrorUsername.Text = Validator.ValidateUsernameExists(txtNewUsername.Text.Trim(), _connectionString, out string err) ? "" : err;
+            lblErrorUsername.Text = Validator.ValidateUsernameExists(txtNewUsername.Text.Trim(),out string err) ? "" : err;
             UpdateButtonState();
         }
 
@@ -333,5 +329,10 @@ namespace assignment
         {
 
         }
+
     }
 }
+
+
+
+
